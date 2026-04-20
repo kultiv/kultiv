@@ -1,0 +1,405 @@
+{% comment %}
+  KULTIV · Hero Section
+  Full-screen homepage hero with animated tagline and CTA
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Hero",
+  "tag": "section",
+  "class": "kultiv-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Complete Longevity Nutrition"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Tend the ground.\nLive longer in it."
+    },
+    {
+      "type": "text",
+      "id": "subline",
+      "label": "Subline",
+      "default": "A complete food system engineered around microbiome science and inflammaging research. Not a supplement. Not a shake. A daily ritual for how long you live well."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA text",
+      "default": "Start Your Subscription"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA text",
+      "default": "Explore the Science"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA link"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show stat bar",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV Hero"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--k-earth-2);
+  }
+
+  .kultiv-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .kultiv-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.18;
+    filter: saturate(0.4);
+  }
+
+  .kultiv-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 60% 50%, transparent 0%, var(--k-earth-2) 70%);
+  }
+
+  .kultiv-hero__orb {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(31, 61, 42, 0.35) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .kultiv-hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 120px var(--k-gutter) 80px;
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .kultiv-hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.2s forwards;
+  }
+
+  .kultiv-hero__eyebrow-line {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background-color: var(--k-gold);
+  }
+
+  .kultiv-hero__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--k-cream);
+    white-space: pre-line;
+    margin-bottom: 32px;
+    max-width: 800px;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+  }
+
+  .kultiv-hero__headline em {
+    font-style: italic;
+    color: var(--k-gold);
+  }
+
+  .kultiv-hero__subline {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--k-muted);
+    max-width: 500px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.6s forwards;
+  }
+
+  .kultiv-hero__ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.8s forwards;
+  }
+
+  .kultiv-hero__cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background-color: var(--k-gold);
+    color: var(--k-earth);
+    padding: 18px 36px;
+    border: 1px solid var(--k-gold);
+    transition: all var(--k-transition);
+  }
+
+  .kultiv-hero__cta-primary:hover {
+    background-color: transparent;
+    color: var(--k-gold);
+  }
+
+  .kultiv-hero__cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+    padding: 18px 0;
+    border-bottom: 1px solid var(--k-border);
+    transition: all var(--k-transition);
+  }
+
+  .kultiv-hero__cta-secondary:hover {
+    color: var(--k-cream);
+    border-color: var(--k-cream);
+  }
+
+  .kultiv-hero__cta-secondary svg {
+    transition: transform var(--k-transition);
+  }
+
+  .kultiv-hero__cta-secondary:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Scroll indicator */
+  .kultiv-hero__scroll {
+    position: absolute;
+    bottom: 40px;
+    left: var(--k-gutter);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 1.2s forwards;
+  }
+
+  .kultiv-hero__scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--k-gold), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  .kultiv-hero__scroll-label {
+    font-family: var(--k-font-body);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+  }
+
+  /* Stats bar */
+  .kultiv-hero__stats {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--k-border-subtle);
+    background-color: rgba(30, 26, 14, 0.6);
+    backdrop-filter: blur(8px);
+  }
+
+  .kultiv-hero__stats-inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding: 28px var(--k-gutter);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background-color: var(--k-border-subtle);
+  }
+
+  .kultiv-hero__stat {
+    background-color: transparent;
+    padding: 20px 32px 20px 0;
+    border-right: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-hero__stat:last-child {
+    border-right: none;
+  }
+
+  .kultiv-hero__stat-value {
+    font-family: var(--k-font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--k-cream);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .kultiv-hero__stat-label {
+    font-family: var(--k-font-body);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    50% { opacity: 0.4; transform: scaleY(0.7); }
+  }
+
+  @media (max-width: 768px) {
+    .kultiv-hero__content {
+      padding-top: 100px;
+    }
+
+    .kultiv-hero__stats-inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kultiv-hero__stat:nth-child(2) {
+      border-right: none;
+    }
+
+    .kultiv-hero__stat {
+      padding: 16px;
+    }
+  }
+</style>
+
+<div class="kultiv-hero">
+  <div class="kultiv-hero__bg">
+    {% if section.settings.background_image %}
+      {{ section.settings.background_image | image_url: width: 1920 | image_tag: loading: 'eager', fetchpriority: 'high' }}
+    {% else %}
+      {%- comment -%} Decorative organic gradient background {%- endcomment -%}
+      <div style="width:100%;height:100%;background:radial-gradient(ellipse 80% 80% at 20% 80%, rgba(31,61,42,0.3) 0%, transparent 60%),radial-gradient(ellipse 60% 60% at 80% 20%, rgba(200,169,110,0.06) 0%, transparent 50%), var(--k-earth-2);"></div>
+    {% endif %}
+  </div>
+
+  <div class="kultiv-hero__orb"></div>
+
+  <div class="kultiv-hero__content">
+    <div class="kultiv-hero__eyebrow eyebrow">
+      <span class="kultiv-hero__eyebrow-line"></span>
+      {{ section.settings.eyebrow }}
+    </div>
+
+    <h1 class="kultiv-hero__headline">{{ section.settings.headline | newline_to_br }}</h1>
+
+    <p class="kultiv-hero__subline">{{ section.settings.subline }}</p>
+
+    <div class="kultiv-hero__ctas">
+      {% if section.settings.cta_primary_text != blank %}
+        <a href="{{ section.settings.cta_primary_url }}" class="kultiv-hero__cta-primary">
+          {{ section.settings.cta_primary_text }}
+        </a>
+      {% endif %}
+
+      {% if section.settings.cta_secondary_text != blank %}
+        <a href="{{ section.settings.cta_secondary_url }}" class="kultiv-hero__cta-secondary">
+          {{ section.settings.cta_secondary_text }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="square"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="kultiv-hero__scroll" aria-hidden="true">
+    <span class="kultiv-hero__scroll-line"></span>
+    <span class="kultiv-hero__scroll-label">Scroll</span>
+  </div>
+
+  {% if section.settings.show_stats %}
+  <div class="kultiv-hero__stats">
+    <div class="kultiv-hero__stats-inner">
+      <div class="kultiv-hero__stat">
+        <div class="kultiv-hero__stat-value" data-counter="30">30</div>
+        <div class="kultiv-hero__stat-label">Plant Sources</div>
+      </div>
+      <div class="kultiv-hero__stat">
+        <div class="kultiv-hero__stat-value">70<span style="font-size:1rem">%</span></div>
+        <div class="kultiv-hero__stat-label">90-Day Retention Target</div>
+      </div>
+      <div class="kultiv-hero__stat">
+        <div class="kultiv-hero__stat-value">1</div>
+        <div class="kultiv-hero__stat-label">Daily Serving</div>
+      </div>
+      <div class="kultiv-hero__stat">
+        <div class="kultiv-hero__stat-value" style="font-size:1.4rem">Science</div>
+        <div class="kultiv-hero__stat-label">Not Marketing</div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>

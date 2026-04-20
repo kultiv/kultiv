@@ -1,0 +1,417 @@
+/* ============================================================
+   KULTIV · Custom Design System
+   Tend the ground. Live longer in it.
+   Version 1.0 · 2025
+   ============================================================ */
+
+/* ── Google Fonts ──────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+/* ── Brand Tokens ──────────────────────────────────────────── */
+:root {
+  --k-earth:    #1E1A0E;
+  --k-earth-2:  #160E04;
+  --k-surface:  #2C2614;
+  --k-surface-2:#352D18;
+  --k-forest:   #1F3D2A;
+  --k-forest-2: #163020;
+  --k-gold:     #C8A96E;
+  --k-gold-2:   #A88A50;
+  --k-cream:    #F0E8D8;
+  --k-muted:    #9A917E;
+  --k-white:    #FAF7F2;
+  --k-border:   rgba(200, 169, 110, 0.2);
+  --k-border-subtle: rgba(240, 232, 216, 0.08);
+
+  --k-font-display: 'Cormorant Garamond', Georgia, serif;
+  --k-font-body:    'Jost', sans-serif;
+
+  --k-radius-sm: 2px;
+  --k-radius-md: 4px;
+  --k-radius-pill: 100px;
+
+  --k-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --k-transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --k-max-width: 1440px;
+  --k-gutter: clamp(24px, 5vw, 80px);
+}
+
+/* ── Global Reset & Base ───────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--k-earth);
+  color: var(--k-cream);
+  font-family: var(--k-font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── Typography ────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4,
+.shopify-section h1,
+.shopify-section h2,
+.shopify-section h3 {
+  font-family: var(--k-font-display);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--k-cream);
+}
+
+h1, .h1 { font-size: clamp(2.8rem, 7vw, 6rem); }
+h2, .h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+h3, .h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+h4, .h4 { font-size: 1.2rem; }
+
+p {
+  font-family: var(--k-font-body);
+  font-weight: 300;
+  color: var(--k-muted);
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+.eyebrow {
+  font-family: var(--k-font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--k-gold);
+}
+
+a {
+  color: var(--k-cream);
+  text-decoration: none;
+  transition: color var(--k-transition);
+}
+
+a:hover { color: var(--k-gold); }
+
+/* ── Dawn Overrides — Header ───────────────────────────────── */
+.header-wrapper,
+.header {
+  background-color: rgba(30, 26, 14, 0.95) !important;
+  border-bottom: 1px solid var(--k-border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.header__heading-link,
+.header__heading {
+  font-family: var(--k-font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--k-cream) !important;
+}
+
+.header__menu-item,
+.list-menu__item {
+  font-family: var(--k-font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--k-muted) !important;
+  transition: color var(--k-transition);
+}
+
+.header__menu-item:hover,
+.list-menu__item:hover {
+  color: var(--k-cream) !important;
+}
+
+/* ── Dawn Overrides — Buttons ──────────────────────────────── */
+.button,
+.btn,
+button[type="submit"],
+.shopify-payment-button__button {
+  font-family: var(--k-font-body) !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  transition: all var(--k-transition) !important;
+  cursor: pointer;
+}
+
+.button--primary,
+.button:not(.button--secondary) {
+  background-color: var(--k-gold) !important;
+  color: var(--k-earth) !important;
+  border: 1px solid var(--k-gold) !important;
+  padding: 16px 36px !important;
+}
+
+.button--primary:hover {
+  background-color: transparent !important;
+  color: var(--k-gold) !important;
+}
+
+.button--secondary,
+.button--outline {
+  background-color: transparent !important;
+  color: var(--k-cream) !important;
+  border: 1px solid var(--k-border) !important;
+  padding: 16px 36px !important;
+}
+
+.button--secondary:hover {
+  border-color: var(--k-gold) !important;
+  color: var(--k-gold) !important;
+}
+
+/* ── Dawn Overrides — Product Cards ────────────────────────── */
+.card-wrapper,
+.card {
+  background-color: var(--k-surface) !important;
+  border: 1px solid var(--k-border-subtle) !important;
+  border-radius: 0 !important;
+  transition: border-color var(--k-transition), transform var(--k-transition) !important;
+}
+
+.card:hover {
+  border-color: var(--k-border) !important;
+  transform: translateY(-4px);
+}
+
+.card__information {
+  padding: 20px 24px !important;
+}
+
+.card__heading,
+.card__heading a {
+  font-family: var(--k-font-display) !important;
+  font-size: 1.3rem !important;
+  font-weight: 300 !important;
+  color: var(--k-cream) !important;
+}
+
+.price,
+.price__regular,
+.price__sale {
+  font-family: var(--k-font-body) !important;
+  color: var(--k-gold) !important;
+  font-weight: 400 !important;
+}
+
+/* ── Dawn Overrides — Product Page ─────────────────────────── */
+.product__title {
+  font-family: var(--k-font-display) !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-weight: 300 !important;
+  color: var(--k-cream) !important;
+}
+
+.product__description {
+  color: var(--k-muted) !important;
+  font-family: var(--k-font-body) !important;
+  font-weight: 300 !important;
+  line-height: 1.8 !important;
+}
+
+.variant-selects,
+.variant-radios {
+  border-color: var(--k-border) !important;
+}
+
+.swatch__label {
+  font-family: var(--k-font-body) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* ── Dawn Overrides — Footer ────────────────────────────────── */
+.footer,
+.footer-wrapper {
+  background-color: var(--k-earth-2) !important;
+  border-top: 1px solid var(--k-border-subtle);
+  padding-top: 80px !important;
+}
+
+.footer__heading {
+  font-family: var(--k-font-body) !important;
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--k-muted) !important;
+  margin-bottom: 20px !important;
+}
+
+.footer-block__details-content a,
+.footer__list-social-link {
+  font-size: 0.85rem !important;
+  color: var(--k-muted) !important;
+  transition: color var(--k-transition) !important;
+}
+
+.footer-block__details-content a:hover,
+.footer__list-social-link:hover {
+  color: var(--k-cream) !important;
+}
+
+.footer__copyright {
+  color: var(--k-muted) !important;
+  font-size: 0.75rem !important;
+  border-top: 1px solid var(--k-border-subtle) !important;
+  padding-top: 24px !important;
+}
+
+/* ── Dawn Overrides — Forms & Inputs ───────────────────────── */
+.field__input,
+.select__select,
+textarea {
+  background-color: var(--k-surface) !important;
+  color: var(--k-cream) !important;
+  border-color: var(--k-border) !important;
+  border-radius: 0 !important;
+  font-family: var(--k-font-body) !important;
+  font-weight: 300 !important;
+}
+
+.field__input:focus,
+.select__select:focus {
+  border-color: var(--k-gold) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.field__label {
+  font-family: var(--k-font-body) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--k-muted) !important;
+}
+
+/* ── Dawn Overrides — Cart ──────────────────────────────────── */
+.cart-drawer,
+.cart-notification {
+  background-color: var(--k-earth-2) !important;
+  border-left: 1px solid var(--k-border-subtle) !important;
+}
+
+.cart-drawer__header {
+  border-bottom: 1px solid var(--k-border-subtle) !important;
+}
+
+/* ── Dawn Overrides — Breadcrumbs & Badges ─────────────────── */
+.badge {
+  background-color: var(--k-forest) !important;
+  color: var(--k-cream) !important;
+  font-family: var(--k-font-body) !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+}
+
+/* ── Utility Classes ────────────────────────────────────────── */
+.k-container {
+  max-width: var(--k-max-width);
+  margin-inline: auto;
+  padding-inline: var(--k-gutter);
+}
+
+.k-grid {
+  display: grid;
+  gap: 1px;
+  background-color: var(--k-border-subtle);
+}
+
+.k-grid > * {
+  background-color: var(--k-earth);
+}
+
+.k-divider {
+  border: none;
+  border-top: 1px solid var(--k-border-subtle);
+  margin: 0;
+}
+
+.k-tag {
+  display: inline-block;
+  font-family: var(--k-font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--k-gold);
+  border: 1px solid var(--k-border);
+  padding: 6px 14px;
+  border-radius: var(--k-radius-sm);
+}
+
+.k-number {
+  font-family: var(--k-font-display);
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--k-surface-2);
+}
+
+/* ── Scroll Reveal Animation ────────────────────────────────── */
+.k-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.k-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.k-reveal-delay-1 { transition-delay: 0.1s; }
+.k-reveal-delay-2 { transition-delay: 0.2s; }
+.k-reveal-delay-3 { transition-delay: 0.3s; }
+.k-reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Gold Line Accent ───────────────────────────────────────── */
+.k-gold-line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--k-gold);
+  margin-bottom: 24px;
+}
+
+/* ── Noise Texture Overlay ──────────────────────────────────── */
+.k-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --k-gutter: 20px;
+  }
+
+  h1, .h1 { font-size: 2.4rem; }
+  h2, .h2 { font-size: 1.8rem; }
+}

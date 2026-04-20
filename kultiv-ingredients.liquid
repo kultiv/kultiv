@@ -1,0 +1,296 @@
+{% comment %}
+  KULTIV · Ingredients / Science Section
+  Deep-dive into key ingredients with science callouts
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Ingredients",
+  "tag": "section",
+  "class": "kultiv-ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What's Inside"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Every ingredient earns its place."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro text",
+      "default": "Formulated around the current consensus in microbiome science. No fillers. No proprietary blends that hide under-dosed actives. Full transparency, always."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Ingredient name",
+          "default": "Akkermansia Substrates"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category tag",
+          "default": "Postbiotic"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Polyphenol-rich substrates that selectively feed Akkermansia muciniphila — the gut bacteria most consistently associated with metabolic health and longevity in current research."
+        },
+        {
+          "type": "text",
+          "id": "research_note",
+          "label": "Research note",
+          "default": "↑ Mucus layer integrity · Metabolic signalling · Inflammatory regulation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV Ingredients",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "name": "Akkermansia Substrates",
+            "category": "Postbiotic",
+            "description": "Polyphenol-rich substrates that selectively feed Akkermansia muciniphila — the gut bacteria most consistently linked to metabolic health and longevity.",
+            "research_note": "↑ Mucus layer integrity · Metabolic signalling"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "name": "Prebiotic Fibre Blend",
+            "category": "Prebiotic",
+            "description": "A combination of inulin-type fructans and resistant starch from 30+ whole food plant sources. Fuel for the bacteria that fuel you.",
+            "research_note": "↑ Microbial diversity · Short-chain fatty acid production"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "name": "Postbiotic Compounds",
+            "category": "Postbiotic",
+            "description": "Fermentation-derived bioactives that act directly on the immune system and gut epithelium — no live cultures required for efficacy.",
+            "research_note": "↑ Gut barrier integrity · Immune modulation"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "name": "Plant Protein Matrix",
+            "category": "Macronutrient",
+            "description": "Complete amino acid profile from diverse plant sources. Not soy-dominant. Designed around absorption, not label claims.",
+            "research_note": "↑ Satiety · Muscle maintenance · Anti-inflammatory"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-ingredients {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background-color: var(--k-forest-2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kultiv-ingredients::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    background: linear-gradient(to left, rgba(30,26,14,0.5) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .kultiv-ingredients__inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .kultiv-ingredients__sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .kultiv-ingredients__eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .kultiv-ingredients__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    color: var(--k-cream);
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+
+  .kultiv-ingredients__intro {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--k-muted);
+    margin-bottom: 40px;
+  }
+
+  .kultiv-ingredients__total {
+    border: 1px solid var(--k-border);
+    padding: 24px;
+  }
+
+  .kultiv-ingredients__total-value {
+    font-family: var(--k-font-display);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--k-cream);
+    line-height: 1;
+    display: block;
+  }
+
+  .kultiv-ingredients__total-label {
+    font-family: var(--k-font-body);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--k-gold);
+    display: block;
+    margin-top: 8px;
+  }
+
+  /* Ingredient List */
+  .kultiv-ingredients__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background-color: rgba(200,169,110,0.06);
+  }
+
+  .kultiv-ingredient {
+    background-color: var(--k-forest-2);
+    padding: 32px 36px;
+    transition: background-color var(--k-transition);
+    cursor: default;
+  }
+
+  .kultiv-ingredient:hover {
+    background-color: rgba(31, 61, 42, 0.8);
+  }
+
+  .kultiv-ingredient__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .kultiv-ingredient__name {
+    font-family: var(--k-font-display);
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--k-cream);
+  }
+
+  .kultiv-ingredient__tag {
+    font-family: var(--k-font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--k-gold);
+    border: 1px solid var(--k-border);
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+
+  .kultiv-ingredient__description {
+    font-size: 0.83rem;
+    line-height: 1.75;
+    color: var(--k-muted);
+    margin-bottom: 12px;
+    max-width: 58ch;
+  }
+
+  .kultiv-ingredient__research {
+    font-family: var(--k-font-body);
+    font-size: 0.68rem;
+    color: rgba(200, 169, 110, 0.6);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .kultiv-ingredients__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .kultiv-ingredients__sidebar {
+      position: static;
+    }
+  }
+</style>
+
+<section class="kultiv-ingredients">
+  <div class="kultiv-ingredients__inner">
+    <div class="kultiv-ingredients__sidebar k-reveal">
+      <p class="eyebrow kultiv-ingredients__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="kultiv-ingredients__headline">{{ section.settings.headline }}</h2>
+      <p class="kultiv-ingredients__intro">{{ section.settings.intro }}</p>
+
+      <div class="kultiv-ingredients__total">
+        <span class="kultiv-ingredients__total-value">30+</span>
+        <span class="kultiv-ingredients__total-label">Whole Plant Sources</span>
+      </div>
+    </div>
+
+    <div class="kultiv-ingredients__list">
+      {% for block in section.blocks %}
+        {% if block.type == 'ingredient' %}
+          <div class="kultiv-ingredient k-reveal k-reveal-delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <div class="kultiv-ingredient__header">
+              <h3 class="kultiv-ingredient__name">{{ block.settings.name }}</h3>
+              {% if block.settings.category != blank %}
+                <span class="kultiv-ingredient__tag">{{ block.settings.category }}</span>
+              {% endif %}
+            </div>
+            <p class="kultiv-ingredient__description">{{ block.settings.description }}</p>
+            {% if block.settings.research_note != blank %}
+              <div class="kultiv-ingredient__research">{{ block.settings.research_note }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

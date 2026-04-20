@@ -1,0 +1,281 @@
+{% comment %}
+  KULTIV · How It Works
+  3-step subscription model explainer
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV How It Works",
+  "tag": "section",
+  "class": "kultiv-how",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The System"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Built for the long game."
+    },
+    {
+      "type": "text",
+      "id": "subline",
+      "label": "Subline",
+      "default": "Subscribe once. Build the habit. Measure the change."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step title",
+          "default": "Subscribe"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Choose your bag size. Subscribe monthly and save 15%. Cancel anytime — no friction, no lock-in."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Subscribe",
+            "description": "Choose your bag size. Subscribe monthly and save 15%. Cancel anytime — no friction, no lock-in."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Build the Habit",
+            "description": "One serving per day. In water, oat milk, or a smoothie. Morning is optimal — feed your microbiome before the day starts."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Measure the Change",
+            "description": "Most subscribers notice digestive changes within 14 days. The deeper shift — in energy, inflammation, and resilience — shows over months."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-how {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background-color: var(--k-surface);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kultiv-how::before {
+    content: 'KULTIV';
+    position: absolute;
+    bottom: -60px;
+    right: -40px;
+    font-family: var(--k-font-display);
+    font-size: 16vw;
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200, 169, 110, 0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: 0.2em;
+  }
+
+  .kultiv-how__inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-how__header {
+    max-width: 640px;
+    margin-bottom: clamp(48px, 6vw, 80px);
+  }
+
+  .kultiv-how__eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .kultiv-how__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--k-cream);
+    margin-bottom: 16px;
+  }
+
+  .kultiv-how__subline {
+    font-size: 0.9rem;
+    color: var(--k-muted);
+    font-style: italic;
+    font-family: var(--k-font-display);
+  }
+
+  .kultiv-how__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+  }
+
+  .kultiv-how__steps::before {
+    content: '';
+    position: absolute;
+    top: 52px;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--k-border), transparent);
+  }
+
+  .kultiv-how__step {
+    padding: 0 32px 0 0;
+    position: relative;
+  }
+
+  .kultiv-how__step-number-wrap {
+    position: relative;
+    margin-bottom: 32px;
+  }
+
+  .kultiv-how__step-num-bg {
+    font-family: var(--k-font-display);
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(44, 38, 20, 0.8);
+    line-height: 1;
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .kultiv-how__step-dot {
+    position: relative;
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--k-border);
+    background-color: var(--k-earth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--k-font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--k-gold);
+    transition: all var(--k-transition);
+  }
+
+  .kultiv-how__step:hover .kultiv-how__step-dot {
+    background-color: var(--k-gold);
+    color: var(--k-earth);
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-how__step-title {
+    font-family: var(--k-font-display);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--k-cream);
+    margin-bottom: 12px;
+  }
+
+  .kultiv-how__step-desc {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--k-muted);
+    max-width: 36ch;
+  }
+
+  .kultiv-how__step-line {
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--k-gold), transparent);
+    margin: 16px 0;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    .kultiv-how__steps {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .kultiv-how__steps::before {
+      display: none;
+    }
+
+    .kultiv-how__step {
+      padding: 0;
+      border-bottom: 1px solid var(--k-border-subtle);
+      padding-bottom: 40px;
+    }
+
+    .kultiv-how__step:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
+
+<section class="kultiv-how">
+  <div class="kultiv-how__inner">
+    <div class="kultiv-how__header">
+      <p class="eyebrow kultiv-how__eyebrow k-reveal">{{ section.settings.eyebrow }}</p>
+      <h2 class="kultiv-how__headline k-reveal k-reveal-delay-1">{{ section.settings.headline }}</h2>
+      {% if section.settings.subline != blank %}
+        <p class="kultiv-how__subline k-reveal k-reveal-delay-2">{{ section.settings.subline }}</p>
+      {% endif %}
+    </div>
+
+    <div class="kultiv-how__steps">
+      {% for block in section.blocks %}
+        {% if block.type == 'step' %}
+          <div class="kultiv-how__step k-reveal" style="transition-delay: {{ forloop.index | times: 0.1 }}s" {{ block.shopify_attributes }}>
+            <div class="kultiv-how__step-number-wrap">
+              <span class="kultiv-how__step-num-bg" aria-hidden="true">{{ block.settings.number }}</span>
+              <div class="kultiv-how__step-dot">{{ block.settings.number }}</div>
+            </div>
+            <span class="kultiv-how__step-line" aria-hidden="true"></span>
+            <h3 class="kultiv-how__step-title">{{ block.settings.title }}</h3>
+            <p class="kultiv-how__step-desc">{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

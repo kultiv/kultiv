@@ -1,0 +1,248 @@
+{% comment %}
+  KULTIV · About Strip
+  Brand story callout with editorial layout
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV About Strip",
+  "tag": "section",
+  "class": "kultiv-about",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why KULTIV Exists"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "We built this because the supplement industry wasn't honest with us."
+    },
+    {
+      "type": "textarea",
+      "id": "body_1",
+      "label": "Body paragraph 1",
+      "default": "The longevity space is full of products that borrow the language of science without the substance. Underdosed actives. Proprietary blends. Claims that no regulation can touch."
+    },
+    {
+      "type": "textarea",
+      "id": "body_2",
+      "label": "Body paragraph 2",
+      "default": "KULTIV is classified as a complete food — not a supplement. That means full label transparency, rigorous manufacturing standards, and a formulation stack built around what the microbiome research actually says."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Read the Full Story"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Side image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV About Strip"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-about {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background-color: var(--k-earth-2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .kultiv-about__inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .kultiv-about__content {}
+
+  .kultiv-about__eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .kultiv-about__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--k-cream);
+    line-height: 1.2;
+    margin-bottom: 32px;
+    max-width: 20ch;
+  }
+
+  .kultiv-about__body {
+    font-size: 0.88rem;
+    line-height: 1.85;
+    color: var(--k-muted);
+    margin-bottom: 20px;
+  }
+
+  .kultiv-about__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--k-border);
+    margin-top: 20px;
+    transition: all var(--k-transition);
+  }
+
+  .kultiv-about__cta:hover {
+    color: var(--k-cream);
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-about__visual {
+    position: relative;
+  }
+
+  .kultiv-about__image-frame {
+    aspect-ratio: 4/5;
+    background-color: var(--k-surface);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .kultiv-about__image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.6);
+    transition: filter var(--k-transition-slow), transform var(--k-transition-slow);
+  }
+
+  .kultiv-about__image-frame:hover img {
+    filter: saturate(0.8);
+    transform: scale(1.03);
+  }
+
+  .kultiv-about__pullquote {
+    position: absolute;
+    bottom: 32px;
+    left: -32px;
+    background-color: var(--k-forest);
+    border: 1px solid var(--k-border);
+    padding: 24px 28px;
+    max-width: 280px;
+    z-index: 2;
+  }
+
+  .kultiv-about__pullquote-text {
+    font-family: var(--k-font-display);
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--k-cream);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .kultiv-about__pullquote-source {
+    font-family: var(--k-font-body);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--k-gold);
+  }
+
+  .kultiv-about__corner {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 60px;
+    height: 60px;
+    border-top: 1px solid var(--k-gold);
+    border-right: 1px solid var(--k-gold);
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .kultiv-about__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .kultiv-about__visual {
+      order: -1;
+    }
+
+    .kultiv-about__pullquote {
+      left: 0;
+      bottom: 24px;
+      max-width: 260px;
+    }
+  }
+</style>
+
+<section class="kultiv-about">
+  <div class="kultiv-about__inner">
+    <div class="kultiv-about__content k-reveal">
+      <p class="eyebrow kultiv-about__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="kultiv-about__headline">{{ section.settings.headline }}</h2>
+
+      {% if section.settings.body_1 != blank %}
+        <p class="kultiv-about__body">{{ section.settings.body_1 }}</p>
+      {% endif %}
+
+      {% if section.settings.body_2 != blank %}
+        <p class="kultiv-about__body">{{ section.settings.body_2 }}</p>
+      {% endif %}
+
+      {% if section.settings.cta_text != blank %}
+        <a href="{{ section.settings.cta_url }}" class="kultiv-about__cta">
+          {{ section.settings.cta_text }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="square"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="kultiv-about__visual k-reveal k-reveal-delay-2">
+      <div class="kultiv-about__image-frame">
+        {% if section.settings.image %}
+          {{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+        {% else %}
+          <div style="width:100%;height:100%;background:linear-gradient(145deg, var(--k-surface) 0%, var(--k-forest-2) 100%);display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:var(--k-font-display);font-size:8rem;font-weight:300;color:rgba(200,169,110,0.1);letter-spacing:0.2em;">K</span>
+          </div>
+        {% endif %}
+        <div class="kultiv-about__corner" aria-hidden="true"></div>
+      </div>
+
+      <div class="kultiv-about__pullquote">
+        <p class="kultiv-about__pullquote-text">"Not a supplement. A classification that changes everything."</p>
+        <span class="kultiv-about__pullquote-source">FSA Complete Food · UK Registered</span>
+      </div>
+    </div>
+  </div>
+</section>

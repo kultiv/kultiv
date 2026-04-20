@@ -1,0 +1,105 @@
+{% comment %}
+  KULTIV · Science Bar
+  Scrolling ticker of science credentials + key claims
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Science Bar",
+  "tag": "section",
+  "class": "kultiv-science-bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background colour",
+      "default": "#1F3D2A"
+    },
+    {
+      "type": "text",
+      "id": "ticker_items",
+      "label": "Ticker items (pipe-separated)",
+      "default": "30+ Plant Sources|Prebiotic Fibre|Postbiotic Compounds|Akkermansia-Supporting Substrates|Inflammaging Research|Microbiome Diversity|Complete Daily Nutrition|UK Manufactured"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV Science Bar"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-science-bar {
+    background-color: {{ section.settings.background }};
+    border-top: 1px solid rgba(200, 169, 110, 0.15);
+    border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    overflow: hidden;
+    padding: 18px 0;
+  }
+
+  .kultiv-science-bar__track-wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .kultiv-science-bar__track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    animation: marquee 30s linear infinite;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .kultiv-science-bar__track:hover {
+    animation-play-state: paused;
+  }
+
+  .kultiv-science-bar__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 32px;
+    font-family: var(--k-font-body);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240, 232, 216, 0.7);
+    white-space: nowrap;
+  }
+
+  .kultiv-science-bar__item::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--k-gold);
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+{% assign items = section.settings.ticker_items | split: '|' %}
+
+<div class="kultiv-science-bar" aria-hidden="true">
+  <div class="kultiv-science-bar__track-wrapper">
+    <div class="kultiv-science-bar__track k-marquee-track">
+      {% for item in items %}
+        <span class="kultiv-science-bar__item">{{ item }}</span>
+      {% endfor %}
+      {% comment %} Duplicated for seamless loop — JS doubles it again for safety {% endcomment %}
+      {% for item in items %}
+        <span class="kultiv-science-bar__item">{{ item }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>

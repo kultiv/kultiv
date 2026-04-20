@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "enable_sticky_info": true,
+        "show_share_buttons": false
+      },
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description"
+      ]
+    },
+    "kultiv-science-bar": {
+      "type": "kultiv-science-bar",
+      "settings": {
+        "background": "#1F3D2A",
+        "ticker_items": "30+ Plant Sources|Prebiotic Fibre|Postbiotic Compounds|Akkermansia Substrates|Complete Macros|UK Manufactured"
+      }
+    },
+    "kultiv-ingredients": {
+      "type": "kultiv-ingredients",
+      "settings": {
+        "eyebrow": "Formula Breakdown",
+        "headline": "Full transparency. Every ingredient.",
+        "intro": "KULTIV is a complete food — not a supplement. We publish every ingredient and dose. No proprietary blends."
+      }
+    },
+    "kultiv-how": {
+      "type": "kultiv-how-it-works",
+      "settings": {
+        "eyebrow": "How to Take It",
+        "headline": "One serving. Every morning.",
+        "subline": "Consistency is the whole point."
+      },
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Mix",
+            "description": "Add one serving (40g) to 350ml of cold water, oat milk, or add to your morning smoothie."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Drink",
+            "description": "Best taken in the morning before food. The prebiotic fibre performs better on a fasted gut."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Repeat",
+            "description": "Daily consistency matters more than dose. 30 days builds the habit. 90 days builds the result."
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "kultiv-testimonials": {
+      "type": "kultiv-testimonials",
+      "settings": {
+        "eyebrow": "Subscriber Stories",
+        "headline": "The change is gradual. Until it isn't."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "kultiv-science-bar",
+    "kultiv-ingredients",
+    "kultiv-how",
+    "kultiv-testimonials"
+  ]
+}

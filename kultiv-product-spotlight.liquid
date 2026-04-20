@@ -1,0 +1,368 @@
+{% comment %}
+  KULTIV · Product Spotlight
+  Full-width hero product feature section
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Product Spotlight",
+  "tag": "section",
+  "class": "kultiv-spotlight",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Hero SKU"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "The Daily"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Complete meal powder engineered around microbiome diversity. 30+ plant sources. Prebiotic fibre. Postbiotic compounds. Akkermansia-supporting substrates. One serving, every day."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Subscribe & Save 15%"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image (overrides Shopify product image)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature bullet",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Feature label",
+          "default": "30+ Plant Sources"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail text",
+          "default": "Engineered for microbiome diversity"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV Product Spotlight",
+      "blocks": [
+        { "type": "feature", "settings": { "label": "30+ Plant Sources", "detail": "Engineered for microbiome diversity" } },
+        { "type": "feature", "settings": { "label": "Prebiotic Fibre", "detail": "Feeds the good bacteria" } },
+        { "type": "feature", "settings": { "label": "Postbiotic Compounds", "detail": "Supports gut lining integrity" } },
+        { "type": "feature", "settings": { "label": "Akkermansia Substrates", "detail": "Targets key longevity bacteria" } },
+        { "type": "feature", "settings": { "label": "Complete Macros", "detail": "Not a supplement — real food" } },
+        { "type": "feature", "settings": { "label": "UK Manufactured", "detail": "BRC Grade A certified" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% assign product = section.settings.product | default: null %}
+{% if product != blank %}
+  {% assign featured_product = all_products[section.settings.product] %}
+{% endif %}
+
+<style>
+  .kultiv-spotlight {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background-color: var(--k-earth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kultiv-spotlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse 50% 80% at 0% 50%, rgba(31,61,42,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .kultiv-spotlight__inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Image Side */
+  .kultiv-spotlight__visual {
+    position: relative;
+  }
+
+  .kultiv-spotlight__image-frame {
+    position: relative;
+    aspect-ratio: 3/4;
+    background-color: var(--k-surface);
+    overflow: hidden;
+  }
+
+  .kultiv-spotlight__image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .kultiv-spotlight__image-frame:hover img {
+    transform: scale(1.04);
+  }
+
+  .kultiv-spotlight__badge {
+    position: absolute;
+    top: 24px;
+    right: -20px;
+    background-color: var(--k-forest);
+    border: 1px solid rgba(200,169,110,0.2);
+    padding: 16px 20px;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .kultiv-spotlight__badge-value {
+    font-family: var(--k-font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--k-cream);
+    line-height: 1;
+    display: block;
+  }
+
+  .kultiv-spotlight__badge-label {
+    font-family: var(--k-font-body);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--k-gold);
+    display: block;
+    margin-top: 4px;
+  }
+
+  .kultiv-spotlight__corner-line {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    width: 80px;
+    height: 80px;
+    border-left: 1px solid var(--k-gold);
+    border-bottom: 1px solid var(--k-gold);
+    pointer-events: none;
+  }
+
+  /* Content Side */
+  .kultiv-spotlight__content {}
+
+  .kultiv-spotlight__eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .kultiv-spotlight__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--k-cream);
+    margin-bottom: 24px;
+  }
+
+  .kultiv-spotlight__desc {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--k-muted);
+    margin-bottom: 40px;
+    max-width: 44ch;
+  }
+
+  .kultiv-spotlight__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background-color: var(--k-border-subtle);
+    border: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-spotlight__feature {
+    background-color: var(--k-earth);
+    padding: 20px 24px;
+    transition: background-color var(--k-transition);
+  }
+
+  .kultiv-spotlight__feature:hover {
+    background-color: var(--k-surface);
+  }
+
+  .kultiv-spotlight__feature-label {
+    font-family: var(--k-font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--k-cream);
+    margin-bottom: 4px;
+  }
+
+  .kultiv-spotlight__feature-detail {
+    font-size: 0.78rem;
+    color: var(--k-muted);
+    line-height: 1.5;
+  }
+
+  .kultiv-spotlight__pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .kultiv-spotlight__price {
+    font-family: var(--k-font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--k-cream);
+  }
+
+  .kultiv-spotlight__price-note {
+    font-size: 0.75rem;
+    color: var(--k-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .kultiv-spotlight__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background-color: var(--k-gold);
+    color: var(--k-earth);
+    padding: 20px 40px;
+    border: 1px solid var(--k-gold);
+    transition: all var(--k-transition);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .kultiv-spotlight__cta:hover {
+    background-color: transparent;
+    color: var(--k-gold);
+  }
+
+  @media (max-width: 900px) {
+    .kultiv-spotlight__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .kultiv-spotlight__badge {
+      right: 0;
+    }
+
+    .kultiv-spotlight__features {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .kultiv-spotlight__features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="kultiv-spotlight">
+  <div class="kultiv-spotlight__inner">
+    <div class="kultiv-spotlight__visual k-reveal">
+      <div class="kultiv-spotlight__image-frame">
+        {% if section.settings.product_image %}
+          {{ section.settings.product_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+        {% elsif featured_product and featured_product.featured_image %}
+          {{ featured_product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+        {% else %}
+          <div style="width:100%;height:100%;background:var(--k-surface);display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:var(--k-font-display);font-size:5rem;font-weight:300;color:var(--k-border);letter-spacing:0.1em;">K</span>
+          </div>
+        {% endif %}
+        <div class="kultiv-spotlight__corner-line"></div>
+      </div>
+
+      <div class="kultiv-spotlight__badge">
+        <span class="kultiv-spotlight__badge-value">30+</span>
+        <span class="kultiv-spotlight__badge-label">Plants</span>
+      </div>
+    </div>
+
+    <div class="kultiv-spotlight__content">
+      <p class="eyebrow kultiv-spotlight__eyebrow k-reveal">{{ section.settings.eyebrow }}</p>
+
+      <h2 class="kultiv-spotlight__headline k-reveal k-reveal-delay-1">{{ section.settings.headline }}</h2>
+
+      <p class="kultiv-spotlight__desc k-reveal k-reveal-delay-2">{{ section.settings.description }}</p>
+
+      {% if section.blocks.size > 0 %}
+        <ul class="kultiv-spotlight__features k-reveal k-reveal-delay-3">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <li class="kultiv-spotlight__feature" {{ block.shopify_attributes }}>
+                <div class="kultiv-spotlight__feature-label">{{ block.settings.label }}</div>
+                <div class="kultiv-spotlight__feature-detail">{{ block.settings.detail }}</div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div class="kultiv-spotlight__pricing k-reveal k-reveal-delay-4">
+        {% if featured_product %}
+          <span class="kultiv-spotlight__price">{{ featured_product.price | money }}</span>
+          <span class="kultiv-spotlight__price-note">/ month on subscription</span>
+        {% else %}
+          <span class="kultiv-spotlight__price">from £{{ settings.hero_price | default: '49' }}</span>
+          <span class="kultiv-spotlight__price-note">/ month on subscription</span>
+        {% endif %}
+      </div>
+
+      <a href="{% if featured_product %}{{ featured_product.url }}{% else %}/products{% endif %}" class="kultiv-spotlight__cta k-reveal k-reveal-delay-4">
+        {{ section.settings.cta_text }}
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="square"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

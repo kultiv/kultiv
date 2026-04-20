@@ -1,0 +1,260 @@
+{% comment %}
+  KULTIV · Testimonials
+  Social proof with quote-forward design
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Testimonials",
+  "tag": "section",
+  "class": "kultiv-testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Early Subscribers"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "What the first 1,200 say."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "After 3 months I stopped thinking about it as nutrition. It's just part of my morning. Something shifted — quieter digestion, more consistent energy. I don't know how to explain it better than that."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Sarah M."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location / descriptor",
+          "default": "London · Subscriber since Y1"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "After 3 months I stopped thinking of it as nutrition. It's just part of my morning. Quieter digestion, more consistent energy. I don't know how to explain it better than that.",
+            "name": "Sarah M.",
+            "location": "London · 90 days",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried every supplement stack going. The difference here is I'm not treating a deficiency — I'm actually feeding a system. First week was fine. Month two was when I understood what they meant.",
+            "name": "James K.",
+            "location": "Manchester · 60 days",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The science is real. I'm a GP and I was sceptical. I'm not sceptical anymore. The ingredient stack is exactly what current microbiome research supports. I recommend it to patients.",
+            "name": "Dr. A. Patel",
+            "location": "Birmingham · 6 months",
+            "rating": 5
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-testimonials {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background-color: var(--k-earth);
+    overflow: hidden;
+  }
+
+  .kultiv-testimonials__inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-testimonials__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: clamp(40px, 5vw, 72px);
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .kultiv-testimonials__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 300;
+    color: var(--k-cream);
+    max-width: 24ch;
+  }
+
+  .kultiv-testimonials__count {
+    font-family: var(--k-font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+    text-align: right;
+  }
+
+  .kultiv-testimonials__count strong {
+    display: block;
+    font-family: var(--k-font-display);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--k-cream);
+    letter-spacing: 0;
+  }
+
+  .kultiv-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: var(--k-border-subtle);
+    border: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-testimonial {
+    background-color: var(--k-earth);
+    padding: 40px 36px;
+    transition: background-color var(--k-transition);
+    position: relative;
+  }
+
+  .kultiv-testimonial:hover {
+    background-color: var(--k-surface);
+  }
+
+  .kultiv-testimonial__stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  .kultiv-testimonial__star {
+    color: var(--k-gold);
+    font-size: 0.75rem;
+  }
+
+  .kultiv-testimonial__quote {
+    font-family: var(--k-font-display);
+    font-size: 1.15rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--k-cream);
+    font-style: italic;
+    margin-bottom: 32px;
+    flex: 1;
+  }
+
+  .kultiv-testimonial__quote::before {
+    content: '\201C';
+    display: block;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--k-gold);
+    opacity: 0.4;
+    margin-bottom: 8px;
+  }
+
+  .kultiv-testimonial__author {
+    border-top: 1px solid var(--k-border-subtle);
+    padding-top: 20px;
+  }
+
+  .kultiv-testimonial__name {
+    font-family: var(--k-font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--k-cream);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .kultiv-testimonial__location {
+    font-size: 0.7rem;
+    color: var(--k-muted);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .kultiv-testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="kultiv-testimonials">
+  <div class="kultiv-testimonials__inner">
+    <div class="kultiv-testimonials__header k-reveal">
+      <div>
+        <p class="eyebrow" style="margin-bottom:16px;">{{ section.settings.eyebrow }}</p>
+        <h2 class="kultiv-testimonials__headline">{{ section.settings.headline }}</h2>
+      </div>
+      <div class="kultiv-testimonials__count">
+        <strong>4.9</strong>
+        Average Rating
+      </div>
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="kultiv-testimonials__grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'testimonial' %}
+            <article class="kultiv-testimonial k-reveal" style="transition-delay: {{ forloop.index | times: 0.12 }}s" {{ block.shopify_attributes }}>
+              <div class="kultiv-testimonial__stars" aria-label="Rated {{ block.settings.rating }} out of 5">
+                {% for i in (1..block.settings.rating) %}
+                  <span class="kultiv-testimonial__star" aria-hidden="true">★</span>
+                {% endfor %}
+              </div>
+
+              <blockquote class="kultiv-testimonial__quote">{{ block.settings.quote }}</blockquote>
+
+              <div class="kultiv-testimonial__author">
+                <div class="kultiv-testimonial__name">{{ block.settings.name }}</div>
+                <div class="kultiv-testimonial__location">{{ block.settings.location }}</div>
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "kultiv-about-hero": {
+      "type": "kultiv-hero",
+      "settings": {
+        "eyebrow": "The Story",
+        "headline": "We built this\nbecause the industry\nlet us down.",
+        "subline": "KULTIV began as a research project, not a product brief. Two years of validating the inflammaging and microbiome science before a single gram was formulated.",
+        "cta_primary_text": "View the Science",
+        "cta_secondary_text": "Shop Now",
+        "show_stats": false
+      }
+    },
+    "kultiv-science-bar": {
+      "type": "kultiv-science-bar",
+      "settings": {
+        "background": "#1F3D2A",
+        "ticker_items": "Inflammaging Research|Microbiome Science|FSA Complete Food Classification|BRC Grade A Manufacturing|Full Ingredient Transparency|UK Registered 2025"
+      }
+    },
+    "kultiv-about-body": {
+      "type": "kultiv-about-strip",
+      "settings": {
+        "eyebrow": "The Research",
+        "headline": "Months of science validation before product development.",
+        "body_1": "Most nutrition brands start with a market gap and build backwards to a formula. We started with the research — specifically the inflammaging literature and the growing evidence base around Akkermansia muciniphila and gut microbiome diversity as drivers of biological ageing.",
+        "body_2": "The product came second. Hire #1 was a food scientist with a functional nutrition background, not a marketer. The formulation stack was reviewed against the primary research, not category benchmarks.",
+        "cta_text": "Explore the Ingredients",
+        "cta_url": "/products/kultiv-daily"
+      }
+    },
+    "kultiv-values": {
+      "type": "kultiv-how-it-works",
+      "settings": {
+        "eyebrow": "Our Commitments",
+        "headline": "How we hold ourselves accountable.",
+        "subline": ""
+      },
+      "blocks": {
+        "v1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Full Transparency",
+            "description": "Every ingredient listed. Every dose published. No proprietary blends that hide what's actually in the formula."
+          }
+        },
+        "v2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Complete Food, Not Supplement",
+            "description": "FSA-classified as a complete food. Stricter manufacturing standards. Tighter label regulations. We chose the harder path."
+          }
+        },
+        "v3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Science-First Formulation",
+            "description": "Every ingredient inclusion is tied to the peer-reviewed literature. When the science changes, our formula evolves."
+          }
+        }
+      },
+      "block_order": ["v1", "v2", "v3"]
+    }
+  },
+  "order": [
+    "kultiv-about-hero",
+    "kultiv-science-bar",
+    "kultiv-about-body",
+    "kultiv-values"
+  ]
+}

@@ -1,0 +1,32 @@
+{% comment %}
+  KULTIV · theme.liquid HEAD additions
+  
+  Add these lines inside your <head> tag in layout/theme.liquid,
+  BEFORE the closing </head> tag.
+  
+  If you're modifying Dawn's theme.liquid directly, search for:
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+  
+  And add the KULTIV lines below it.
+{% endcomment %}
+
+<!-- =====================================================
+     KULTIV: Paste this block into layout/theme.liquid
+     inside <head>, after base Dawn stylesheet links
+     ===================================================== -->
+
+<!-- Google Fonts: Cormorant Garamond + Jost -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- KULTIV Brand Styles -->
+{{ 'kultiv-custom.css' | asset_url | stylesheet_tag }}
+
+<!-- =====================================================
+     KULTIV: Paste this block into layout/theme.liquid
+     just before the closing </body> tag
+     ===================================================== -->
+
+<!-- KULTIV Animations & Interactions -->
+<script src="{{ 'kultiv-animations.js' | asset_url }}" defer></script>
