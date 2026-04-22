@@ -1,210 +1,197 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "kultiv-hero": {
+      "type": "kultiv-hero",
+      "settings": {
+        "eyebrow": "Complete Longevity Nutrition",
+        "headline": "Tend the ground.\nLive longer in it.",
+        "subline": "A complete food system engineered around microbiome science and inflammaging research. Not a supplement. Not a shake. A daily ritual for how long you live well.",
+        "cta_primary_text": "Start Your Subscription",
+        "cta_secondary_text": "Explore the Science",
+        "show_stats": true
+      }
+    },
+    "kultiv-science-bar": {
+      "type": "kultiv-science-bar",
+      "settings": {
+        "background": "#1F3D2A",
+        "ticker_items": "30+ Plant Sources|Prebiotic Fibre|Postbiotic Compounds|Akkermansia-Supporting Substrates|Inflammaging Research|Microbiome Diversity|Complete Daily Nutrition|UK Manufactured · BRC Grade A"
+      }
+    },
+    "kultiv-product-spotlight": {
+      "type": "kultiv-product-spotlight",
+      "settings": {
+        "eyebrow": "The Daily System",
+        "headline": "The Daily",
+        "description": "Complete meal powder engineered around microbiome diversity. 30+ plant sources. Prebiotic fibre. Postbiotic compounds. Akkermansia-supporting substrates. One serving, every day.",
+        "cta_text": "Subscribe & Save 15%"
+      },
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "feature-1": {
+          "type": "feature",
+          "settings": { "label": "30+ Plant Sources", "detail": "Engineered for microbiome diversity" }
+        },
+        "feature-2": {
+          "type": "feature",
+          "settings": { "label": "Prebiotic Fibre", "detail": "Feeds the good bacteria" }
+        },
+        "feature-3": {
+          "type": "feature",
+          "settings": { "label": "Postbiotic Compounds", "detail": "Supports gut lining integrity" }
+        },
+        "feature-4": {
+          "type": "feature",
+          "settings": { "label": "Akkermansia Substrates", "detail": "Targets key longevity bacteria" }
+        },
+        "feature-5": {
+          "type": "feature",
+          "settings": { "label": "Complete Macros", "detail": "Not a supplement — real food" }
+        },
+        "feature-6": {
+          "type": "feature",
+          "settings": { "label": "UK Manufactured", "detail": "BRC Grade A certified" }
+        }
+      },
+      "block_order": ["feature-1", "feature-2", "feature-3", "feature-4", "feature-5", "feature-6"]
+    },
+    "kultiv-how-it-works": {
+      "type": "kultiv-how-it-works",
+      "settings": {
+        "eyebrow": "The System",
+        "headline": "Built for the long game.",
+        "subline": "Subscribe once. Build the habit. Measure the change."
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "number": "01",
+            "title": "Subscribe",
+            "description": "Choose your bag size. Subscribe monthly and save 15%. Cancel anytime — no friction, no lock-in."
           }
         },
-        "text": {
-          "type": "text",
+        "step-2": {
+          "type": "step",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "number": "02",
+            "title": "Build the Habit",
+            "description": "One serving per day. In water, oat milk, or a smoothie. Morning is optimal — feed your microbiome before the day starts."
           }
         },
-        "button": {
-          "type": "buttons",
+        "step-3": {
+          "type": "step",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "number": "03",
+            "title": "Measure the Change",
+            "description": "Most subscribers notice digestive changes within 14 days. The deeper shift — in energy, inflammation, and resilience — shows over months."
           }
         }
       },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+      "block_order": ["step-1", "step-2", "step-3"]
     },
-    "rich_text": {
-      "type": "rich-text",
+    "kultiv-ingredients": {
+      "type": "kultiv-ingredients",
+      "settings": {
+        "eyebrow": "What's Inside",
+        "headline": "Every ingredient earns its place.",
+        "intro": "Formulated around the current consensus in microbiome science. No fillers. No proprietary blends that hide under-dosed actives. Full transparency, always."
+      },
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "ing-1": {
+          "type": "ingredient",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "name": "Akkermansia Substrates",
+            "category": "Postbiotic",
+            "description": "Polyphenol-rich substrates that selectively feed Akkermansia muciniphila — the gut bacteria most consistently linked to metabolic health and longevity.",
+            "research_note": "↑ Mucus layer integrity · Metabolic signalling · Inflammatory regulation"
           }
         },
-        "text": {
-          "type": "text",
+        "ing-2": {
+          "type": "ingredient",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "name": "Prebiotic Fibre Blend",
+            "category": "Prebiotic",
+            "description": "A combination of inulin-type fructans and resistant starch from 30+ whole food plant sources. Fuel for the bacteria that fuel you.",
+            "research_note": "↑ Microbial diversity · Short-chain fatty acid production"
+          }
+        },
+        "ing-3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Postbiotic Compounds",
+            "category": "Postbiotic",
+            "description": "Fermentation-derived bioactives that act directly on the immune system and gut epithelium — no live cultures required for efficacy.",
+            "research_note": "↑ Gut barrier integrity · Immune modulation"
+          }
+        },
+        "ing-4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "Plant Protein Matrix",
+            "category": "Macronutrient",
+            "description": "Complete amino acid profile from diverse plant sources. Not soy-dominant. Designed around absorption, not label claims.",
+            "research_note": "↑ Satiety · Muscle maintenance · Anti-inflammatory"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "text"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
-      }
+      "block_order": ["ing-1", "ing-2", "ing-3", "ing-4"]
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "kultiv-testimonials": {
+      "type": "kultiv-testimonials",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
-    "collage": {
-      "type": "collage",
+        "eyebrow": "Early Subscribers",
+        "headline": "What the first 1,200 say."
+      },
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "t-1": {
+          "type": "testimonial",
           "settings": {
-            "collection": ""
+            "quote": "After 3 months I stopped thinking of it as nutrition. It's just part of my morning. Quieter digestion, more consistent energy. I don't know how to explain it better than that.",
+            "name": "Sarah M.",
+            "location": "London · 90 days",
+            "rating": 5
           }
         },
-        "product": {
-          "type": "product",
+        "t-2": {
+          "type": "testimonial",
           "settings": {
-            "product": "",
-            "second_image": false
+            "quote": "I've tried every supplement stack going. The difference here is I'm not treating a deficiency — I'm actually feeding a system. Month two was when I understood what they meant.",
+            "name": "James K.",
+            "location": "Manchester · 60 days",
+            "rating": 5
           }
         },
-        "collection-1": {
-          "type": "collection",
+        "t-3": {
+          "type": "testimonial",
           "settings": {
-            "collection": ""
+            "quote": "The science is real. I'm a GP and I was sceptical. I'm not sceptical anymore. The ingredient stack is exactly what current microbiome research supports.",
+            "name": "Dr. A. Patel",
+            "location": "Birmingham · 6 months",
+            "rating": 5
           }
         }
       },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "block_order": ["t-1", "t-2", "t-3"]
     },
-    "video": {
-      "type": "video",
+    "kultiv-about": {
+      "type": "kultiv-about-strip",
       "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "eyebrow": "Why KULTIV Exists",
+        "headline": "We built this because the supplement industry wasn't honest with us.",
+        "body_1": "The longevity space is full of products that borrow the language of science without the substance. Underdosed actives. Proprietary blends. Claims that no regulation can touch.",
+        "body_2": "KULTIV is classified as a complete food — not a supplement. That means full label transparency, rigorous manufacturing standards, and a formulation stack built around what the microbiome research actually says.",
+        "cta_text": "Read the Full Story",
+        "cta_url": "/pages/about"
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "kultiv-hero",
+    "kultiv-science-bar",
+    "kultiv-product-spotlight",
+    "kultiv-how-it-works",
+    "kultiv-ingredients",
+    "kultiv-testimonials",
+    "kultiv-about"
   ]
 }

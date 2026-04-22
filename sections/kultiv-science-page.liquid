@@ -1,0 +1,241 @@
+{% comment %}
+  KULTIV · Science credibility page (full page)
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Science Page",
+  "tag": "section",
+  "class": "kultiv-science-page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Evidence"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "We follow\nthe literature."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "KULTIV is built around microbiome diversity, inflammaging, and gut barrier integrity — not trend ingredients. Here is how we think about proof."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "See full formula"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Research pillar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Microbiome"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Diversity as a longevity signal"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "We prioritise breadth of plant substrates and prebiotic structures that selective fermentation research supports — not a single \"hero\" strain on the label."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV Science Page",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "label": "Microbiome",
+            "title": "Diversity as a longevity signal",
+            "body": "Plant diversity and fermentable fibre are consistent levers in trials that look at microbial richness and systemic inflammation."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "label": "Inflammaging",
+            "title": "Nutrition that respects chronic inflammation",
+            "body": "We formulate away from ultra-processed patterns and toward whole-food matrices that align with how longevity researchers model low-grade inflammation."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "label": "Manufacturing",
+            "title": "BRC-grade, UK-made",
+            "body": "Complete food standards and BRC certification mean the formula is made under food-industry controls — not supplement-only norms."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-science-page {
+    background: linear-gradient(165deg, var(--k-earth) 0%, var(--k-earth-2) 100%);
+    color: var(--k-cream);
+    padding: clamp(72px, 10vw, 120px) 0 clamp(88px, 12vw, 140px);
+  }
+
+  .kultiv-science-page__inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-science-page__hero {
+    max-width: 44rem;
+    margin-bottom: clamp(48px, 8vw, 80px);
+  }
+
+  .kultiv-science-page__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(2.1rem, 4.5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.08;
+    margin: 0 0 24px;
+    white-space: pre-line;
+  }
+
+  .kultiv-science-page__intro {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--k-muted);
+    margin: 0 0 28px;
+  }
+
+  .kultiv-science-page__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--k-gold);
+    border-bottom: 1px solid var(--k-border);
+    padding-bottom: 6px;
+    transition: color var(--k-transition), border-color var(--k-transition);
+  }
+
+  .kultiv-science-page__cta:hover {
+    color: var(--k-cream);
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-science-page__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 32px);
+  }
+
+  .kultiv-science-page__card {
+    background: var(--k-surface);
+    border: 1px solid var(--k-border-subtle);
+    padding: clamp(24px, 3vw, 36px);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kultiv-science-page__card .eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .kultiv-science-page__card h2 {
+    font-family: var(--k-font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    color: var(--k-cream);
+  }
+
+  .kultiv-science-page__card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--k-muted);
+    flex-grow: 1;
+  }
+
+  @media (max-width: 960px) {
+    .kultiv-science-page__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="kultiv-science-page">
+  <div class="kultiv-science-page__inner">
+    <header class="kultiv-science-page__hero k-reveal">
+      {% if section.settings.eyebrow != blank %}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        <h1 class="kultiv-science-page__headline">{{ section.settings.headline }}</h1>
+      {% endif %}
+      {% if section.settings.intro != blank %}
+        <p class="kultiv-science-page__intro">{{ section.settings.intro }}</p>
+      {% endif %}
+      {% if section.settings.cta_text != blank %}
+        <a class="kultiv-science-page__cta" href="{{ section.settings.cta_url | default: routes.all_products_collection_url }}">
+          {{ section.settings.cta_text }}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="square"/>
+          </svg>
+        </a>
+      {% endif %}
+    </header>
+
+    {% if section.blocks.size > 0 %}
+      <div class="kultiv-science-page__grid">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'pillar' %}
+              <article class="kultiv-science-page__card k-reveal" {{ block.shopify_attributes }}>
+                {% if block.settings.label != blank %}
+                  <p class="eyebrow">{{ block.settings.label }}</p>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <h2>{{ block.settings.title }}</h2>
+                {% endif %}
+                {% if block.settings.body != blank %}
+                  <p>{{ block.settings.body }}</p>
+                {% endif %}
+              </article>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>

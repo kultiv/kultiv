@@ -1,0 +1,203 @@
+{% comment %}
+  KULTIV · FAQ page (full page)
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV FAQ Page",
+  "tag": "section",
+  "class": "kultiv-faq-page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Straight answers."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Everything we get asked before someone commits to a daily ritual."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is KULTIV a supplement?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>No — it is formulated and classified as a complete food in the UK, with different regulatory expectations than a supplement.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KULTIV FAQ Page",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is KULTIV a supplement?",
+            "answer": "<p>No. It is a complete food with full ingredient transparency — not a proprietary blend stack.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do subscriptions work?",
+            "answer": "<p>You choose a selling plan in checkout. Manage skip, pause, or cancel from your customer account or your subscription app portal.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will I notice a difference?",
+            "answer": "<p>Digestive comfort often shifts first. Deeper energy and resilience tend to compound over 60–90 days of daily use.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-faq-page {
+    background-color: var(--k-earth);
+    color: var(--k-cream);
+    padding: clamp(72px, 10vw, 120px) 0 clamp(80px, 12vw, 140px);
+  }
+
+  .kultiv-faq-page__inner {
+    max-width: 720px;
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-faq-page__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0 0 20px;
+  }
+
+  .kultiv-faq-page__intro {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--k-muted);
+    margin: 0 0 clamp(40px, 6vw, 64px);
+  }
+
+  .kultiv-faq-page__list {
+    border-top: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-faq-page__item {
+    border-bottom: 1px solid var(--k-border-subtle);
+    padding: 28px 0;
+  }
+
+  .kultiv-faq-page__item summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: var(--k-font-display);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--k-cream);
+    line-height: 1.35;
+  }
+
+  .kultiv-faq-page__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .kultiv-faq-page__chev {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    border: 1px solid var(--k-border);
+    display: grid;
+    place-items: center;
+    transition: transform var(--k-transition), border-color var(--k-transition);
+  }
+
+  .kultiv-faq-page__item[open] .kultiv-faq-page__chev {
+    transform: rotate(45deg);
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-faq-page__answer {
+    margin: 18px 44px 0 0;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--k-muted);
+  }
+
+  .kultiv-faq-page__answer p {
+    margin: 0 0 12px;
+  }
+
+  .kultiv-faq-page__answer p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="kultiv-faq-page">
+  <div class="kultiv-faq-page__inner">
+    <header class="k-reveal">
+      {% if section.settings.eyebrow != blank %}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        <h1 class="kultiv-faq-page__headline">{{ section.settings.headline }}</h1>
+      {% endif %}
+      {% if section.settings.intro != blank %}
+        <p class="kultiv-faq-page__intro">{{ section.settings.intro }}</p>
+      {% endif %}
+    </header>
+
+    <div class="kultiv-faq-page__list">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'faq_item' %}
+            <details class="kultiv-faq-page__item k-reveal" {{ block.shopify_attributes }}>
+              <summary>
+                <span>{{ block.settings.question }}</span>
+                <span class="kultiv-faq-page__chev" aria-hidden="true">
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                    <path d="M4 1v6M1 4h6" stroke="currentColor" stroke-width="1"/>
+                  </svg>
+                </span>
+              </summary>
+              <div class="kultiv-faq-page__answer rte">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

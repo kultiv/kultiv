@@ -1,0 +1,272 @@
+{% comment %}
+  KULTIV · Subscription landing (full page)
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Subscription Page",
+  "tag": "section",
+  "class": "kultiv-subscription-page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Subscribe"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "One habit.\nMeasured in years."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Monthly delivery, 15% off, cancel anytime. Built for people who want microbiome-first nutrition without the supplement aisle."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA",
+      "default": "Start subscription"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA",
+      "default": "View product"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA link"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Works with ReCharge, Seal Subscriptions, or native selling plans — assign your subscription product URL above."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Perk",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Save every month"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "15% off recurring orders. No codes, no chasing sales."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "KULTIV Subscription Page",
+      "blocks": [
+        { "type": "perk", "settings": { "title": "Save every month", "text": "15% off recurring orders. Cancel anytime from your account." } },
+        { "type": "perk", "settings": { "title": "Shipped on your rhythm", "text": "Monthly by default — adjust frequency in your subscription portal." } },
+        { "type": "perk", "settings": { "title": "FSA complete food", "text": "Full label transparency and BRC-grade manufacturing." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-subscription-page {
+    --k-sub-pad: clamp(72px, 12vw, 140px);
+    background: linear-gradient(180deg, var(--k-earth-2) 0%, var(--k-earth) 45%);
+    color: var(--k-cream);
+    padding: var(--k-sub-pad) 0 clamp(80px, 10vw, 120px);
+  }
+
+  .kultiv-subscription-page__inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-subscription-page__hero {
+    max-width: 52rem;
+    margin-bottom: clamp(48px, 8vw, 88px);
+  }
+
+  .kultiv-subscription-page__headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(2.2rem, 5vw, 3.75rem);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--k-cream);
+    margin: 0 0 28px;
+    white-space: pre-line;
+  }
+
+  .kultiv-subscription-page__intro {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--k-muted);
+    margin: 0 0 36px;
+    max-width: 48ch;
+  }
+
+  .kultiv-subscription-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    align-items: center;
+  }
+
+  .kultiv-subscription-page__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 28px;
+    font-family: var(--k-font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-radius: var(--k-radius-pill);
+    border: 1px solid transparent;
+    transition: background var(--k-transition), color var(--k-transition), border-color var(--k-transition);
+  }
+
+  .kultiv-subscription-page__btn--primary {
+    background: var(--k-forest);
+    color: var(--k-cream);
+    border-color: rgba(200, 169, 110, 0.35);
+  }
+
+  .kultiv-subscription-page__btn--primary:hover {
+    background: var(--k-forest-2);
+    border-color: var(--k-gold);
+    color: var(--k-white);
+  }
+
+  .kultiv-subscription-page__btn--ghost {
+    background: transparent;
+    color: var(--k-muted);
+    border-color: var(--k-border);
+  }
+
+  .kultiv-subscription-page__btn--ghost:hover {
+    color: var(--k-cream);
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-subscription-page__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--k-border-subtle);
+    border: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-subscription-page__perk {
+    background: var(--k-surface);
+    padding: clamp(28px, 4vw, 40px);
+  }
+
+  .kultiv-subscription-page__perk h3 {
+    font-family: var(--k-font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--k-cream);
+    margin: 0 0 12px;
+  }
+
+  .kultiv-subscription-page__perk p {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--k-muted);
+  }
+
+  .kultiv-subscription-page__footnote {
+    margin-top: 32px;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: rgba(154, 145, 126, 0.85);
+    max-width: 52ch;
+  }
+
+  @media (max-width: 900px) {
+    .kultiv-subscription-page__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="kultiv-subscription-page">
+  <div class="kultiv-subscription-page__inner">
+    <header class="kultiv-subscription-page__hero k-reveal">
+      {% if section.settings.eyebrow != blank %}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        <h1 class="kultiv-subscription-page__headline">{{ section.settings.headline }}</h1>
+      {% endif %}
+      {% if section.settings.intro != blank %}
+        <p class="kultiv-subscription-page__intro">{{ section.settings.intro }}</p>
+      {% endif %}
+      <div class="kultiv-subscription-page__actions">
+        {% if section.settings.cta_primary_text != blank %}
+          <a
+            class="kultiv-subscription-page__btn kultiv-subscription-page__btn--primary"
+            href="{{ section.settings.cta_primary_url | default: routes.root_url }}"
+          >
+            {{ section.settings.cta_primary_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.cta_secondary_text != blank %}
+          <a
+            class="kultiv-subscription-page__btn kultiv-subscription-page__btn--ghost"
+            href="{{ section.settings.cta_secondary_url | default: routes.all_products_collection_url }}"
+          >
+            {{ section.settings.cta_secondary_text }}
+          </a>
+        {% endif %}
+      </div>
+    </header>
+
+    {% if section.blocks.size > 0 %}
+      <div class="kultiv-subscription-page__grid">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'perk' %}
+              <article class="kultiv-subscription-page__perk k-reveal" {{ block.shopify_attributes }}>
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <p>{{ block.settings.text }}</p>
+                {% endif %}
+              </article>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.footnote != blank %}
+      <p class="kultiv-subscription-page__footnote">{{ section.settings.footnote }}</p>
+    {% endif %}
+  </div>
+</div>
