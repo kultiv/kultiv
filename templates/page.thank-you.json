@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "kultiv-thank-you",
+      "settings": {
+        "headline": "You are in.",
+        "body": "<p>KULTIV is not released publicly.</p><p>We are onboarding a small number of founding members first.</p><p>You will hear from us soon.</p>",
+        "cta_label": "Read the science",
+        "cta_url": "/pages/science"
+      }
+    }
+  },
+  "order": ["main"]
+}

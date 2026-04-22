@@ -1,0 +1,109 @@
+{% comment %}
+  KULTIV · Post-signup thank you (controlled demand tone)
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Thank you",
+  "tag": "section",
+  "class": "kultiv-thank-you",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "You are in."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>KULTIV is not released publicly.</p><p>We are onboarding a small number of founding members first.</p><p>You will hear from us soon.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Secondary link label",
+      "default": "Read the science"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Secondary link"
+    }
+  ],
+  "presets": [{ "name": "KULTIV Thank you" }]
+}
+{% endschema %}
+
+<style>
+  .kultiv-thank-you {
+    padding: clamp(88px, 14vw, 140px) 0 clamp(72px, 10vw, 100px);
+    background: linear-gradient(180deg, var(--k-earth-2) 0%, var(--k-earth) 55%);
+    color: var(--k-cream);
+    font-family: var(--k-font-body), system-ui, sans-serif;
+  }
+
+  .kultiv-thank-you__inner {
+    max-width: 34rem;
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-thank-you__headline {
+    font-family: var(--k-font-display), ui-serif, Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0 0 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .kultiv-thank-you__body {
+    font-size: 1.02rem;
+    line-height: 1.85;
+    font-weight: 300;
+    color: var(--k-muted);
+  }
+
+  .kultiv-thank-you__body p {
+    margin: 0 0 16px;
+  }
+
+  .kultiv-thank-you__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .kultiv-thank-you__link {
+    display: inline-flex;
+    margin-top: 32px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--k-gold);
+    border-bottom: 1px solid var(--k-border);
+    padding-bottom: 6px;
+    text-decoration: none;
+    transition: color var(--k-transition), border-color var(--k-transition);
+  }
+
+  .kultiv-thank-you__link:hover {
+    color: var(--k-cream);
+    border-color: var(--k-gold);
+  }
+</style>
+
+<div class="kultiv-thank-you">
+  <div class="kultiv-thank-you__inner k-reveal">
+    {% if section.settings.headline != blank %}
+      <h1 class="kultiv-thank-you__headline">{{ section.settings.headline }}</h1>
+    {% endif %}
+    {% if section.settings.body != blank %}
+      <div class="kultiv-thank-you__body rte">{{ section.settings.body }}</div>
+    {% endif %}
+    {% if section.settings.cta_label != blank and section.settings.cta_url != blank %}
+      <a class="kultiv-thank-you__link" href="{{ section.settings.cta_url }}">{{ section.settings.cta_label }}</a>
+    {% endif %}
+  </div>
+</div>

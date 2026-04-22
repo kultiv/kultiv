@@ -34,7 +34,7 @@
       "type": "textarea",
       "id": "intro",
       "label": "Intro",
-      "default": "Built from soil upward. Designed for lifespan, not trends. Join early access — we only write when it matters."
+      "default": "Built from soil upward. Designed for lifespan, not trends. Request access — we only write when it matters."
     },
     {
       "type": "text",
@@ -57,8 +57,8 @@
       "type": "text",
       "id": "newsletter_tags",
       "label": "Customer tags (comma-separated)",
-      "default": "early-access, newsletter",
-      "info": "Applied when someone signs up. Visible in Shopify Admin → Customers."
+      "default": "request-access, early-access, newsletter",
+      "info": "Applied on signup. Intent (longevity, energy, optimisation) is appended as intent-* tags when the goal selector is enabled."
     },
     {
       "type": "text",
@@ -70,13 +70,37 @@
       "type": "text",
       "id": "waitlist_submit_label",
       "label": "Waitlist button label",
-      "default": "Join early access"
+      "default": "Request access"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_goal_select",
+      "label": "Ask for primary goal (segmentation)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "goal_select_label",
+      "label": "Goal selector — first option label",
+      "default": "Primary goal"
     },
     {
       "type": "text",
       "id": "waitlist_success_message",
       "label": "Success message",
-      "default": "You are on the list. We will be in touch."
+      "default": "You are on the list. Founding access is limited — we will be in touch."
+    },
+    {
+      "type": "url",
+      "id": "thank_you_url",
+      "label": "Thank you page (after signup)",
+      "info": "Create a page with handle thank-you and assign the Thank you template. Shown as a continue link after success."
+    },
+    {
+      "type": "text",
+      "id": "thank_you_link_label",
+      "label": "Continue link label",
+      "default": "Continue"
     },
     {
       "type": "text",
@@ -146,7 +170,10 @@
         "headline": "Not a supplement.\nA system.",
         "intro": "Built from soil upward. Designed for lifespan, not trends.",
         "scarcity_line": "Founding members · limited allocation",
-        "release_scope_line": "First release: United Kingdom and Germany"
+        "release_scope_line": "First release: United Kingdom and Germany",
+        "waitlist_submit_label": "Request access",
+        "thank_you_url": "/pages/thank-you",
+        "thank_you_link_label": "Continue"
       },
       "blocks": [
         { "type": "perk", "settings": { "title": "Founding access", "text": "First to know at launch — pricing, science drops, and allocation." } },
@@ -226,11 +253,23 @@
     max-width: 36rem;
   }
 
+  .kultiv-subscription-page__field-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: stretch;
+  }
+
   .kultiv-subscription-page__field-row {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     align-items: stretch;
+  }
+
+  .kultiv-subscription-page__field-stack .kultiv-subscription-page__field-row input[type='email'] {
+    flex: 1 1 100%;
+    min-width: 0;
   }
 
   .kultiv-subscription-page__field-row input[type='email'] {
@@ -256,10 +295,42 @@
     border-color: var(--k-gold);
   }
 
-  .kultiv-subscription-page__field-row button[type='submit'] {
-    flex: 0 0 auto;
+  .kultiv-subscription-page__interest {
+    width: 100%;
     min-height: 48px;
-    padding: 0 26px;
+    padding: 0 16px;
+    font-family: var(--k-font-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--k-cream);
+    background: var(--k-surface);
+    border: 1px solid var(--k-border-subtle);
+    border-radius: var(--k-radius-md);
+    outline: none;
+    cursor: pointer;
+    transition: border-color var(--k-transition);
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--k-muted) 50%),
+      linear-gradient(135deg, var(--k-muted) 50%, transparent 50%);
+    background-position: calc(100% - 22px) calc(50% + 2px), calc(100% - 16px) calc(50% + 2px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+  }
+
+  .kultiv-subscription-page__interest:focus {
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-subscription-page__submit-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .kultiv-subscription-page__submit-row button[type='submit'] {
+    min-height: 48px;
+    padding: 0 28px;
     font-family: var(--k-font-body);
     font-size: 0.7rem;
     font-weight: 500;
@@ -273,7 +344,7 @@
     transition: background var(--k-transition), border-color var(--k-transition);
   }
 
-  .kultiv-subscription-page__field-row button[type='submit']:hover {
+  .kultiv-subscription-page__submit-row button[type='submit']:hover {
     background: var(--k-forest-2);
     border-color: var(--k-gold);
   }
@@ -285,10 +356,33 @@
   }
 
   .kultiv-subscription-page__form-success {
-    margin: 0;
+    margin: 0 0 20px;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--k-cream);
+  }
+
+  .kultiv-subscription-page__success-next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 28px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--k-cream);
+    border: 1px solid var(--k-border);
+    border-radius: var(--k-radius-pill);
+    text-decoration: none;
+    transition: border-color var(--k-transition), color var(--k-transition);
+  }
+
+  .kultiv-subscription-page__success-next:hover {
+    border-color: var(--k-gold);
+    color: var(--k-gold);
   }
 
   .kultiv-subscription-page__waitlist-sub {
@@ -402,31 +496,63 @@
       {% if section.settings.hero_action == 'waitlist' %}
         <div class="kultiv-subscription-page__waitlist">
           {% form 'customer', class: 'kultiv-subscription-page__form' %}
-            <input type="hidden" name="contact[tags]" value="{{ section.settings.newsletter_tags | strip | escape }}">
+            <input
+              type="hidden"
+              name="contact[tags]"
+              id="KultivWaitlistTags-{{ section.id }}"
+              value="{{ section.settings.newsletter_tags | strip | escape }}"
+              data-kultiv-waitlist-tags
+              data-base-tags="{{ section.settings.newsletter_tags | strip | escape }}"
+            >
             {% if form.posted_successfully? %}
               <p class="kultiv-subscription-page__form-success" tabindex="-1">
                 {{ section.settings.waitlist_success_message }}
               </p>
+              {% if section.settings.thank_you_url != blank %}
+                <a class="kultiv-subscription-page__success-next" href="{{ section.settings.thank_you_url }}">
+                  {{ section.settings.thank_you_link_label | escape }}
+                </a>
+              {% endif %}
             {% else %}
               {% if form.errors %}
                 <div class="kultiv-subscription-page__form-errors">
                   {{ form.errors | default_errors }}
                 </div>
               {% endif %}
-              <div class="kultiv-subscription-page__field-row">
-                <label class="visually-hidden" for="KultivWaitlistEmail-{{ section.id }}">{{ section.settings.email_placeholder }}</label>
-                <input
-                  id="KultivWaitlistEmail-{{ section.id }}"
-                  type="email"
-                  name="contact[email]"
-                  value="{{ form.email }}"
-                  placeholder="{{ section.settings.email_placeholder | escape }}"
-                  autocomplete="email"
-                  autocorrect="off"
-                  autocapitalize="off"
-                  required
-                >
-                <button type="submit">{{ section.settings.waitlist_submit_label | escape }}</button>
+              <div class="kultiv-subscription-page__field-stack">
+                <div class="kultiv-subscription-page__field-row">
+                  <label class="visually-hidden" for="KultivWaitlistEmail-{{ section.id }}">{{ section.settings.email_placeholder }}</label>
+                  <input
+                    id="KultivWaitlistEmail-{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    value="{{ form.email }}"
+                    placeholder="{{ section.settings.email_placeholder | escape }}"
+                    autocomplete="email"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    required
+                  >
+                </div>
+                {% if section.settings.show_goal_select %}
+                  <div>
+                    <label class="visually-hidden" for="KultivWaitlistGoal-{{ section.id }}">{{ section.settings.goal_select_label }}</label>
+                    <select
+                      id="KultivWaitlistGoal-{{ section.id }}"
+                      class="kultiv-subscription-page__interest"
+                      data-kultiv-waitlist-interest
+                      required
+                    >
+                      <option value="" disabled selected>{{ section.settings.goal_select_label }}</option>
+                      <option value="longevity">Longevity</option>
+                      <option value="energy">Energy</option>
+                      <option value="optimisation">Health optimisation</option>
+                    </select>
+                  </div>
+                {% endif %}
+                <div class="kultiv-subscription-page__submit-row">
+                  <button type="submit">{{ section.settings.waitlist_submit_label | escape }}</button>
+                </div>
               </div>
               {% if section.settings.waitlist_subtext != blank %}
                 <p class="kultiv-subscription-page__waitlist-sub">{{ section.settings.waitlist_subtext }}</p>
@@ -479,3 +605,22 @@
     {% endif %}
   </div>
 </div>
+
+{% javascript %}
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var sid = {{ section.id | json }};
+    var root = document.getElementById('shopify-section-' + sid);
+    if (!root) return;
+    var tags = root.querySelector('[data-kultiv-waitlist-tags]');
+    var sel = root.querySelector('[data-kultiv-waitlist-interest]');
+    if (!tags || !sel) return;
+    var base = tags.getAttribute('data-base-tags') || tags.value;
+    tags.value = base;
+    sel.addEventListener('change', function () {
+      var v = sel.value;
+      tags.value = v ? base + ', intent-' + v : base;
+    });
+  });
+})();
+{% endjavascript %}
