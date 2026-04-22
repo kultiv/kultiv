@@ -1,0 +1,348 @@
+{% comment %}
+  KULTIV · Private access / invite-only line item → checkout
+{% endcomment %}
+
+{% liquid
+  assign access_product = section.settings.product
+  if access_product == blank and section.settings.product_handle != blank
+    assign access_product = all_products[section.settings.product_handle]
+  endif
+%}
+
+{% schema %}
+{
+  "name": "KULTIV Access",
+  "tag": "section",
+  "class": "kultiv-access",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Pick the hidden SKU (not in collections). Handle fallback below is used if this is empty."
+    },
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Product handle (fallback)",
+      "default": "kultiv-daily-system",
+      "info": "Must match Shopify product handle when the picker above is empty."
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "KULTIV Daily System"
+    },
+    {
+      "type": "textarea",
+      "id": "subline",
+      "label": "Subline",
+      "default": "Complete longevity nutrition · Subscription intake"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show live price from product",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Price note (optional, under price)",
+      "default": "Founding members · billing at checkout"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit button",
+      "default": "Continue to secure checkout"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Founding members only · Limited first release"
+    },
+    {
+      "type": "text",
+      "id": "empty_heading",
+      "label": "Empty state heading",
+      "default": "Product not connected"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_body",
+      "label": "Empty state copy",
+      "default": "Assign the hidden product in the theme editor, or match the handle fallback to your SKU."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit line",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Line",
+          "default": "Soil-first nutrient system"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "KULTIV Access",
+      "blocks": [
+        { "type": "benefit", "settings": { "text": "Soil-first nutrient system" } },
+        { "type": "benefit", "settings": { "text": "Daily intake protocol" } },
+        { "type": "benefit", "settings": { "text": "Built for long-term biological performance" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kultiv-access {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(72px, 10vw, 120px) var(--k-gutter);
+    background: linear-gradient(180deg, var(--k-earth-2) 0%, var(--k-earth) 45%);
+    color: var(--k-cream);
+    font-family: var(--k-font-body), system-ui, sans-serif;
+  }
+
+  .kultiv-access__inner {
+    width: 100%;
+    max-width: 28rem;
+    text-align: center;
+  }
+
+  .kultiv-access__eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .kultiv-access__headline {
+    font-family: var(--k-font-display), ui-serif, Georgia, serif;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: var(--k-cream);
+  }
+
+  .kultiv-access__sub {
+    margin: 0 0 28px;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    font-weight: 300;
+    color: var(--k-muted);
+  }
+
+  .kultiv-access__price {
+    font-family: var(--k-font-display), ui-serif, Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    color: var(--k-gold);
+    margin: 0 0 8px;
+  }
+
+  .kultiv-access__price-note {
+    margin: 0 0 28px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(154, 145, 126, 0.9);
+  }
+
+  .kultiv-access__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    text-align: left;
+    border-top: 1px solid var(--k-border-subtle);
+    border-bottom: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-access__list li {
+    padding: 14px 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgba(240, 232, 216, 0.82);
+    border-bottom: 1px solid var(--k-border-subtle);
+    font-weight: 300;
+  }
+
+  .kultiv-access__list li:last-child {
+    border-bottom: none;
+  }
+
+  .kultiv-access__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .kultiv-access__variants {
+    width: 100%;
+    margin-bottom: 0;
+    min-height: 48px;
+    padding: 0 14px;
+    font-family: var(--k-font-body);
+    font-size: 0.88rem;
+    color: var(--k-cream);
+    background: var(--k-surface);
+    border: 1px solid var(--k-border-subtle);
+    border-radius: var(--k-radius-md);
+  }
+
+  .kultiv-access__submit {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 8px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--k-cream);
+    background: var(--k-forest);
+    border: 1px solid rgba(200, 169, 110, 0.4);
+    border-radius: var(--k-radius-pill);
+    cursor: pointer;
+    transition: background var(--k-transition), border-color var(--k-transition);
+  }
+
+  .kultiv-access__submit:hover:not([disabled]) {
+    background: var(--k-forest-2);
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-access__submit[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .kultiv-access__footnote {
+    margin: 20px 0 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(154, 145, 126, 0.85);
+    line-height: 1.6;
+  }
+
+  .kultiv-access__empty {
+    padding: 24px;
+    border: 1px solid var(--k-border-subtle);
+    background: var(--k-surface);
+    border-radius: var(--k-radius-md);
+    text-align: left;
+  }
+
+  .kultiv-access__empty h2 {
+    font-family: var(--k-font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    margin: 0 0 12px;
+    color: var(--k-cream);
+  }
+
+  .kultiv-access__empty p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--k-muted);
+  }
+</style>
+
+<div class="kultiv-access">
+  <div class="kultiv-access__inner k-reveal">
+    {% if access_product != blank %}
+      <p class="eyebrow kultiv-access__eyebrow">Private access</p>
+      {% if section.settings.headline != blank %}
+        <h1 class="kultiv-access__headline">{{ section.settings.headline }}</h1>
+      {% else %}
+        <h1 class="kultiv-access__headline">{{ access_product.title }}</h1>
+      {% endif %}
+
+      {% if section.settings.subline != blank %}
+        <p class="kultiv-access__sub">{{ section.settings.subline }}</p>
+      {% endif %}
+
+      {% liquid
+        assign v = access_product.selected_or_first_available_variant
+      %}
+
+      {% if section.settings.show_price %}
+        <p class="kultiv-access__price">{{ v.price | money }}</p>
+      {% endif %}
+      {% if section.settings.price_note != blank %}
+        <p class="kultiv-access__price-note">{{ section.settings.price_note }}</p>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="kultiv-access__list" role="list">
+          {% for block in section.blocks %}
+            {% if block.type == 'benefit' and block.settings.text != blank %}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if v.available %}
+        {% form 'product',
+          access_product,
+          id: 'KultivAccessForm-' | append: section.id,
+          class: 'kultiv-access__form',
+          novalidate: 'novalidate'
+        %}
+          <input type="hidden" name="quantity" value="1">
+          {% if access_product.has_only_default_variant %}
+            <input type="hidden" name="id" value="{{ v.id }}">
+          {% else %}
+            <label class="visually-hidden" for="KultivAccessVariant-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+            <select name="id" id="KultivAccessVariant-{{ section.id }}" class="kultiv-access__variants" required>
+              {% for variant in access_product.variants %}
+                <option
+                  value="{{ variant.id }}"
+                  {% if variant.id == v.id %}selected{% endif %}
+                  {% unless variant.available %}disabled{% endunless %}
+                >
+                  {{ variant.title }} — {{ variant.price | money }}
+                </option>
+              {% endfor %}
+            </select>
+          {% endif %}
+          <button type="submit" name="add" class="kultiv-access__submit">
+            {{ section.settings.submit_label }}
+          </button>
+        {% endform %}
+      {% else %}
+        <p class="kultiv-access__sub">{{ 'products.product.sold_out' | t }}</p>
+        <button type="button" class="kultiv-access__submit" disabled>{{ section.settings.submit_label }}</button>
+      {% endif %}
+
+      {% if section.settings.footnote != blank %}
+        <p class="kultiv-access__footnote">{{ section.settings.footnote }}</p>
+      {% endif %}
+    {% else %}
+      <div class="kultiv-access__empty">
+        {% if section.settings.empty_heading != blank %}
+          <h2>{{ section.settings.empty_heading }}</h2>
+        {% endif %}
+        {% if section.settings.empty_body != blank %}
+          <p>{{ section.settings.empty_body }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

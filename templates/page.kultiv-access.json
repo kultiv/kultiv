@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "access": {
+      "type": "kultiv-access",
+      "settings": {
+        "product_handle": "kultiv-daily-system",
+        "headline": "KULTIV Daily System",
+        "subline": "Complete longevity nutrition · Subscription intake",
+        "show_price": true,
+        "price_note": "Founding members · billing at checkout",
+        "submit_label": "Continue to secure checkout",
+        "footnote": "Founding members only · Limited first release"
+      },
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": { "text": "Soil-first nutrient system" }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": { "text": "Daily intake protocol" }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": { "text": "Built for long-term biological performance" }
+        }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    }
+  },
+  "order": ["access"]
+}
