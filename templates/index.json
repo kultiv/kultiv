@@ -1,29 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "kultiv-landing": {
       "type": "kultiv-landing",
-      "settings": {
-        "hero_kicker": "KULTIV · COMPLETE LONGEVITY NUTRITION",
-        "hero_eyebrow": "",
-        "hero_headline": "Tend the ground.\nLive longer in it.",
-        "hero_subline": "Complete longevity nutrition. Built from soil upward.",
-        "hero_cta_label": "Request access",
-        "hero_cta_url": "/pages/subscribe",
-        "hero_post_cta_line": "Launching 2025 · United Kingdom and Germany",
-        "problem_headline": "Modern nutrition is broken.",
-        "problem_body": "Most supplements are engineered in labs, detached from how nutrients actually occur in nature. Optimised for trends, not biology.",
-        "intelligence_body": "Most modern approaches ignore one constraint: nutrients do not exist in isolation in nature.",
-        "approach_headline": "We start where health actually begins — in inputs, not claims.",
-        "system_headline": "The daily system",
-        "system_body": "A consistent, soil-first intake designed to compound over time. Not a quick fix — a long-term biological advantage. One daily system — not a shelf of single-outcome SKUs.",
-        "science_headline": "Grounded in biology.",
-        "science_body": "Not marketing cycles. We publish where we stand — and evolve when the evidence moves.",
-        "final_headline": "Join the first release.",
-        "final_subline": "United Kingdom and Germany · Limited founding members",
-        "final_scarcity_line": "Limited founding members · First release only",
-        "final_cta_label": "Request access",
-        "final_cta_url": "/pages/subscribe"
-      },
       "blocks": {
         "ac1": {
           "type": "approach_column",
@@ -47,8 +34,33 @@
           }
         }
       },
-      "block_order": ["ac1", "ac2", "ac3"]
+      "block_order": [
+        "ac1",
+        "ac2",
+        "ac3"
+      ],
+      "settings": {
+        "hero_image": "shopify://shop_images/microbiome-organic-roots.png",
+        "hero_eyebrow": "",
+        "hero_headline": "Tend the ground.\nLive longer in it.",
+        "hero_subline": "Complete longevity nutrition. Built from soil upward.",
+        "hero_cta_label": "Request access",
+        "hero_cta_url": "/pages/subscribe",
+        "problem_headline": "Modern nutrition is broken.",
+        "problem_body": "Most supplements are engineered in labs, detached from how nutrients actually occur in nature. Optimised for trends, not biology.",
+        "approach_headline": "We start where health actually begins — in inputs, not claims.",
+        "system_headline": "The daily system",
+        "system_body": "A consistent, soil-first intake designed to compound over time. Not a quick fix — a long-term biological advantage. One daily system — not a shelf of single-outcome SKUs.",
+        "science_headline": "Grounded in biology.",
+        "science_body": "Not marketing cycles. We publish where we stand — and evolve when the evidence moves.",
+        "final_headline": "Join the first release.",
+        "final_subline": "United Kingdom and Germany · Limited founding members",
+        "final_cta_label": "Request access",
+        "final_cta_url": "/pages/subscribe"
+      }
     }
   },
-  "order": ["kultiv-landing"]
+  "order": [
+    "kultiv-landing"
+  ]
 }
