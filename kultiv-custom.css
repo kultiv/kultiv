@@ -415,3 +415,10 @@ textarea {
   h1, .h1 { font-size: 2.4rem; }
   h2, .h2 { font-size: 1.8rem; }
 }
+
+/* ── Pre-launch: soften commerce on homepage only ─────────────
+   Remove this block when you go live with catalog + cart. */
+body.template-index a.header__icon--cart,
+body.template-index #cart-icon-bubble {
+  display: none !important;
+}
