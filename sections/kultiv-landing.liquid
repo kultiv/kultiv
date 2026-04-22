@@ -15,26 +15,19 @@
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Hero background image",
-      "info": "Soil textures, raw inputs, or restrained lab stills outperform generic supplement packshots."
-    },
-    {
-      "type": "text",
-      "id": "hero_kicker",
-      "label": "Hero brand line (above headline)",
-      "default": "KULTIV · COMPLETE LONGEVITY NUTRITION"
+      "label": "Hero background image"
     },
     {
       "type": "text",
       "id": "hero_eyebrow",
-      "label": "Hero eyebrow (optional)",
-      "default": ""
+      "label": "Hero eyebrow",
+      "default": "Complete longevity nutrition"
     },
     {
       "type": "textarea",
       "id": "hero_headline",
       "label": "Hero headline",
-      "default": "Tend the ground.\nLive longer in it."
+      "default": "Not a supplement.\nA system."
     },
     {
       "type": "textarea",
@@ -46,19 +39,12 @@
       "type": "text",
       "id": "hero_cta_label",
       "label": "Hero CTA label",
-      "default": "Request access"
+      "default": "Join early access"
     },
     {
       "type": "url",
       "id": "hero_cta_url",
       "label": "Hero CTA link"
-    },
-    {
-      "type": "text",
-      "id": "hero_post_cta_line",
-      "label": "Line under hero CTA",
-      "default": "Launching 2025 · United Kingdom and Germany",
-      "info": "Edit the year and regions to match your comms calendar."
     },
     {
       "type": "header",
@@ -78,24 +64,13 @@
     },
     {
       "type": "header",
-      "content": "Intelligence (proof of depth)"
-    },
-    {
-      "type": "textarea",
-      "id": "intelligence_body",
-      "label": "Constraint / insight paragraph",
-      "default": "Most modern approaches ignore one constraint: nutrients do not exist in isolation in nature.",
-      "info": "Leave blank to hide this band. Keep claims precise — credibility beats volume."
-    },
-    {
-      "type": "header",
       "content": "The approach"
     },
     {
       "type": "text",
       "id": "approach_headline",
       "label": "Section headline",
-      "default": "We start where health actually begins — in inputs, not claims."
+      "default": "We start where health actually begins."
     },
     {
       "type": "header",
@@ -111,7 +86,7 @@
       "type": "textarea",
       "id": "system_body",
       "label": "Body",
-      "default": "A consistent, soil-first intake designed to compound over time. Not a quick fix — a long-term biological advantage. One daily system — not a shelf of single-outcome SKUs."
+      "default": "A consistent, soil-first intake designed to compound over time. Not a quick fix — a long-term biological advantage."
     },
     {
       "type": "header",
@@ -147,16 +122,9 @@
     },
     {
       "type": "text",
-      "id": "final_scarcity_line",
-      "label": "Scarcity line (under button)",
-      "default": "Limited founding members · First release only",
-      "info": "Keep truthful. Remove if you do not want urgency language."
-    },
-    {
-      "type": "text",
       "id": "final_cta_label",
       "label": "Button label",
-      "default": "Request access"
+      "default": "Join early access"
     },
     {
       "type": "url",
@@ -231,26 +199,15 @@
 <style>
   .kultiv-landing {
     --k-landing-pad: clamp(80px, 12vw, 132px);
-    --kl-display-1: clamp(2.625rem, 6vw, 4.5rem);
+    --kl-display-1: clamp(2.85rem, 7vw, 5rem);
     --kl-display-2: clamp(1.9rem, 3.4vw, 3.1rem);
     --kl-body-lg: clamp(1.06rem, 1.7vw, 1.22rem);
     --kl-body-sm: clamp(0.9rem, 1.2vw, 0.95rem);
     background-color: var(--k-earth);
     color: var(--k-cream);
-    font-family: var(--k-font-body), system-ui, sans-serif;
+    font-family: var(--k-font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  .kultiv-landing p,
-  .kultiv-landing a.kultiv-landing__btn {
-    font-family: var(--k-font-body), system-ui, sans-serif;
-  }
-
-  .kultiv-landing h1,
-  .kultiv-landing h2,
-  .kultiv-landing h3 {
-    font-family: var(--k-font-display), ui-serif, Georgia, serif;
   }
 
   .kultiv-landing__hero {
@@ -272,7 +229,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.3;
+    opacity: 0.75;
     filter: saturate(0.42) contrast(1.05);
     transform: scale(1.02);
   }
@@ -281,8 +238,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(0, 0, 0, 0.35) 0%, transparent 55%),
-      linear-gradient(185deg, rgba(22, 14, 4, 0.2) 0%, rgba(22, 14, 4, 0.82) 52%, var(--k-earth) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6));
     pointer-events: none;
   }
 
@@ -312,17 +268,6 @@
     opacity: 0.85;
   }
 
-  .kultiv-landing__hero-kicker {
-    margin: 0 0 18px;
-    font-family: var(--k-font-body);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: rgba(200, 169, 110, 0.92);
-    max-width: 36rem;
-  }
-
   .kultiv-landing__hero-eyebrow {
     margin-bottom: 22px;
   }
@@ -347,17 +292,6 @@
     margin: 0 0 40px;
     max-width: 34ch;
     letter-spacing: 0.01em;
-  }
-
-  .kultiv-landing__hero-postcta {
-    margin: 22px 0 0;
-    font-family: var(--k-font-body);
-    font-size: 0.72rem;
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(154, 145, 126, 0.95);
-    max-width: 32ch;
   }
 
   .kultiv-landing__btn {
@@ -392,30 +326,6 @@
   .kultiv-landing__btn:focus-visible {
     outline: 1px solid var(--k-gold);
     outline-offset: 4px;
-  }
-
-  .kultiv-landing__intelligence {
-    padding: clamp(48px, 8vw, 72px) 0;
-    border-top: 1px solid var(--k-border-subtle);
-    background: linear-gradient(180deg, rgba(22, 14, 4, 0.35) 0%, var(--k-earth) 100%);
-  }
-
-  .kultiv-landing__inner--intelligence {
-    max-width: 38rem;
-    margin-inline: auto;
-    text-align: center;
-    padding-inline: var(--k-gutter);
-  }
-
-  .kultiv-landing__intelligence-text {
-    margin: 0;
-    font-family: var(--k-font-display);
-    font-size: clamp(1.15rem, 2.4vw, 1.45rem);
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.55;
-    color: rgba(240, 232, 216, 0.88);
-    letter-spacing: -0.01em;
   }
 
   .kultiv-landing__band {
@@ -555,14 +465,6 @@
     line-height: 1.65;
   }
 
-  .kultiv-landing__final-scarcity {
-    margin: 20px 0 0;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(154, 145, 126, 0.72);
-  }
-
   @media (max-width: 900px) {
     .kultiv-landing__grid {
       grid-template-columns: 1fr;
@@ -581,13 +483,8 @@
     }
 
     .kultiv-landing__final .kultiv-landing__h2,
-    .kultiv-landing__final-sub,
-    .kultiv-landing__final-scarcity {
+    .kultiv-landing__final-sub {
       margin-inline: 0;
-    }
-
-    .kultiv-landing__inner--intelligence {
-      text-align: left;
     }
   }
 
@@ -614,9 +511,6 @@
     </div>
     <div class="kultiv-landing__hero-inner">
       <div class="kultiv-landing__hero-rule" aria-hidden="true"></div>
-      {% if section.settings.hero_kicker != blank %}
-        <p class="kultiv-landing__hero-kicker">{{ section.settings.hero_kicker }}</p>
-      {% endif %}
       {% if section.settings.hero_eyebrow != blank %}
         <p class="eyebrow kultiv-landing__hero-eyebrow">{{ section.settings.hero_eyebrow }}</p>
       {% endif %}
@@ -628,9 +522,6 @@
       {% endif %}
       {% if section.settings.hero_cta_label != blank %}
         <a class="kultiv-landing__btn" href="{{ hero_href }}">{{ section.settings.hero_cta_label }}</a>
-      {% endif %}
-      {% if section.settings.hero_post_cta_line != blank %}
-        <p class="kultiv-landing__hero-postcta">{{ section.settings.hero_post_cta_line }}</p>
       {% endif %}
     </div>
   </header>
@@ -645,14 +536,6 @@
       {% endif %}
     </div>
   </section>
-
-  {% if section.settings.intelligence_body != blank %}
-    <section class="kultiv-landing__intelligence k-reveal" aria-label="Editorial note">
-      <div class="kultiv-landing__inner kultiv-landing__inner--intelligence">
-        <p class="kultiv-landing__intelligence-text">{{ section.settings.intelligence_body }}</p>
-      </div>
-    </section>
-  {% endif %}
 
   <section class="kultiv-landing__band k-reveal">
     <div class="kultiv-landing__inner">
@@ -710,9 +593,6 @@
       {% endif %}
       {% if section.settings.final_cta_label != blank %}
         <a class="kultiv-landing__btn" href="{{ final_href }}">{{ section.settings.final_cta_label }}</a>
-      {% endif %}
-      {% if section.settings.final_scarcity_line != blank %}
-        <p class="kultiv-landing__final-scarcity">{{ section.settings.final_scarcity_line }}</p>
       {% endif %}
     </div>
   </section>
