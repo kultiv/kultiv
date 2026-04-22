@@ -41,10 +41,10 @@
       ],
       "settings": {
         "hero_image": "shopify://shop_images/microbiome-organic-roots.png",
-        "hero_eyebrow": "",
+        "hero_eyebrow": "Rebuild Your Gut.Extend Your Healthspan.",
         "hero_headline": "Tend the ground.\nLive longer in it.",
-        "hero_subline": "Complete longevity nutrition. Built from soil upward.",
-        "hero_cta_label": "Request access",
+        "hero_subline": "Daily microbiome nutrition built from soil upward.\nDesigned for longevity, not trends.",
+        "hero_cta_label": "Join early access",
         "hero_cta_url": "/pages/subscribe",
         "problem_headline": "Modern nutrition is broken.",
         "problem_body": "Most supplements are engineered in labs, detached from how nutrients actually occur in nature. Optimised for trends, not biology.",
