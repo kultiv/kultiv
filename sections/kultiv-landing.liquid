@@ -60,7 +60,7 @@
       "type": "textarea",
       "id": "problem_body",
       "label": "Body",
-      "default": "Most supplements are built in labs, not grown in soil. They optimise for trends, not biology."
+      "default": "Most supplements are engineered in labs, detached from how nutrients actually occur in nature. Optimised for trends, not biology."
     },
     {
       "type": "header",
@@ -80,13 +80,13 @@
       "type": "text",
       "id": "system_headline",
       "label": "Headline",
-      "default": "Daily intake. Long-term compounding."
+      "default": "The daily system"
     },
     {
       "type": "textarea",
       "id": "system_body",
       "label": "Body",
-      "default": "Built for lifespan, not quick wins. One disciplined ritual — not a cabinet of single-note products."
+      "default": "A consistent, soil-first intake designed to compound over time. Not a quick fix — a long-term biological advantage."
     },
     {
       "type": "header",
@@ -162,21 +162,21 @@
           "type": "approach_column",
           "settings": {
             "title": "Soil → Nutrient density",
-            "text": "Health signals start upstream — in diversity, structure, and what the soil passes forward."
+            "text": "Health begins in the ground, not the capsule."
           }
         },
         {
           "type": "approach_column",
           "settings": {
             "title": "Bioavailability over dosage",
-            "text": "What you absorb matters more than what you print on a label."
+            "text": "Absorption defines outcome."
           }
         },
         {
           "type": "approach_column",
           "settings": {
-            "title": "System over single product",
-            "text": "Longevity is a daily signal — not a one-off hero ingredient."
+            "title": "System over products",
+            "text": "Longevity is built daily, not occasionally."
           }
         }
       ]
@@ -198,17 +198,24 @@
 
 <style>
   .kultiv-landing {
-    --k-landing-pad: clamp(72px, 11vw, 120px);
+    --k-landing-pad: clamp(80px, 12vw, 132px);
+    --kl-display-1: clamp(2.85rem, 7vw, 5rem);
+    --kl-display-2: clamp(1.9rem, 3.4vw, 3.1rem);
+    --kl-body-lg: clamp(1.06rem, 1.7vw, 1.22rem);
+    --kl-body-sm: clamp(0.9rem, 1.2vw, 0.95rem);
     background-color: var(--k-earth);
     color: var(--k-cream);
+    font-family: var(--k-font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .kultiv-landing__hero {
     position: relative;
-    min-height: min(100svh, 900px);
+    min-height: min(100svh, 960px);
     display: flex;
     align-items: flex-end;
-    padding: var(--k-landing-pad) 0 clamp(56px, 8vw, 96px);
+    padding: var(--k-landing-pad) 0 clamp(64px, 9vw, 112px);
     overflow: hidden;
   }
 
@@ -222,27 +229,25 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.22;
-    filter: saturate(0.45);
+    opacity: 0.3;
+    filter: saturate(0.42) contrast(1.05);
+    transform: scale(1.02);
   }
 
   .kultiv-landing__hero-bg::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(22, 14, 4, 0.5) 0%,
-      rgba(22, 14, 4, 0.75) 45%,
-      var(--k-earth) 100%
-    );
+    background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(0, 0, 0, 0.35) 0%, transparent 55%),
+      linear-gradient(185deg, rgba(22, 14, 4, 0.2) 0%, rgba(22, 14, 4, 0.82) 52%, var(--k-earth) 100%);
+    pointer-events: none;
   }
 
   .kultiv-landing__hero-fallback {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 80% 80% at 20% 80%, rgba(31, 61, 42, 0.35) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(200, 169, 110, 0.07) 0%, transparent 50%),
+    background: radial-gradient(ellipse 80% 80% at 20% 80%, rgba(31, 61, 42, 0.38) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(200, 169, 110, 0.08) 0%, transparent 50%),
       var(--k-earth-2);
   }
 
@@ -253,53 +258,75 @@
     max-width: var(--k-max-width);
     margin-inline: auto;
     padding-inline: var(--k-gutter);
+    padding-bottom: 4px;
+  }
+
+  .kultiv-landing__hero-rule {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--k-gold), transparent);
+    margin-bottom: 28px;
+    opacity: 0.85;
   }
 
   .kultiv-landing__hero-eyebrow {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
 
   .kultiv-landing__hero-headline {
     font-family: var(--k-font-display);
-    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    font-size: var(--kl-display-1);
     font-weight: 300;
-    line-height: 1.05;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
     color: var(--k-cream);
-    margin: 0 0 24px;
-    max-width: 14ch;
+    margin: 0 0 26px;
+    max-width: 15ch;
+    text-wrap: balance;
   }
 
   .kultiv-landing__hero-subline {
-    font-size: clamp(1rem, 2vw, 1.15rem);
-    line-height: 1.75;
-    color: var(--k-muted);
-    margin: 0 0 36px;
-    max-width: 36ch;
+    font-size: var(--kl-body-lg);
+    font-weight: 300;
+    line-height: 1.78;
+    color: rgba(240, 232, 216, 0.78);
+    margin: 0 0 40px;
+    max-width: 34ch;
+    letter-spacing: 0.01em;
   }
 
   .kultiv-landing__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 50px;
-    padding: 0 32px;
+    min-height: 52px;
+    padding: 0 36px;
     font-family: var(--k-font-body);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--k-cream);
     background: var(--k-forest);
-    border: 1px solid rgba(200, 169, 110, 0.35);
+    border: 1px solid rgba(200, 169, 110, 0.4);
     border-radius: var(--k-radius-pill);
     text-decoration: none;
-    transition: background var(--k-transition), border-color var(--k-transition), color var(--k-transition);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+    transition: background var(--k-transition), border-color var(--k-transition), color var(--k-transition),
+      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--k-transition);
   }
 
   .kultiv-landing__btn:hover {
     background: var(--k-forest-2);
     border-color: var(--k-gold);
     color: var(--k-white);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.42);
+  }
+
+  .kultiv-landing__btn:focus-visible {
+    outline: 1px solid var(--k-gold);
+    outline-offset: 4px;
   }
 
   .kultiv-landing__band {
@@ -312,8 +339,9 @@
   }
 
   .kultiv-landing__band--forest {
-    background: linear-gradient(180deg, var(--k-forest-2) 0%, var(--k-forest) 100%);
-    border-color: rgba(200, 169, 110, 0.12);
+    background: linear-gradient(165deg, #142818 0%, var(--k-forest-2) 38%, var(--k-forest) 100%);
+    border-color: rgba(200, 169, 110, 0.14);
+    box-shadow: inset 0 1px 0 rgba(200, 169, 110, 0.08);
   }
 
   .kultiv-landing__inner {
@@ -322,59 +350,105 @@
     padding-inline: var(--k-gutter);
   }
 
+  .kultiv-landing__inner--editorial {
+    max-width: 40rem;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .kultiv-landing__inner--editorial .kultiv-landing__body {
+    margin-inline: auto;
+    max-width: 48ch;
+    font-size: var(--kl-body-lg);
+  }
+
   .kultiv-landing__h2 {
     font-family: var(--k-font-display);
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-size: var(--kl-display-2);
     font-weight: 300;
-    line-height: 1.12;
-    margin: 0 0 20px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px;
     color: var(--k-cream);
+    text-wrap: balance;
   }
 
   .kultiv-landing__body {
-    font-size: 1rem;
-    line-height: 1.85;
+    font-size: var(--kl-body-sm);
+    line-height: 1.88;
     color: var(--k-muted);
     margin: 0;
     max-width: 52ch;
+    font-weight: 300;
   }
 
   .kultiv-landing__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    margin-top: clamp(36px, 5vw, 56px);
+    margin-top: clamp(40px, 5.5vw, 64px);
     background: var(--k-border-subtle);
     border: 1px solid var(--k-border-subtle);
   }
 
   .kultiv-landing__col {
+    position: relative;
     background: var(--k-earth);
-    padding: clamp(28px, 4vw, 40px);
+    padding: clamp(32px, 4.5vw, 48px) clamp(24px, 3vw, 36px);
+    min-height: 100%;
+    transition: background var(--k-transition-slow), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .kultiv-landing__col::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 169, 110, 0.35), transparent);
+    opacity: 0;
+    transition: opacity var(--k-transition);
+  }
+
+  .kultiv-landing__col:hover {
+    background: var(--k-surface);
+  }
+
+  .kultiv-landing__col:hover::before {
+    opacity: 1;
   }
 
   .kultiv-landing__band--surface .kultiv-landing__col {
     background: var(--k-surface-2);
   }
 
+  .kultiv-landing__band--surface .kultiv-landing__col:hover {
+    background: rgba(53, 45, 24, 0.65);
+  }
+
   .kultiv-landing__col h3 {
     font-family: var(--k-font-display);
-    font-size: 1.2rem;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
     font-weight: 400;
-    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
     color: var(--k-cream);
   }
 
   .kultiv-landing__col p {
     margin: 0;
-    font-size: 0.88rem;
-    line-height: 1.75;
+    font-size: 0.9rem;
+    line-height: 1.78;
     color: var(--k-muted);
+    font-weight: 300;
   }
 
   .kultiv-landing__final {
     text-align: center;
-    padding: clamp(88px, 12vw, 140px) 0;
+    padding: clamp(96px, 13vw, 148px) 0;
+    background: linear-gradient(180deg, var(--k-earth-2) 0%, var(--k-earth) 55%);
+    border-top: 1px solid rgba(200, 169, 110, 0.18);
   }
 
   .kultiv-landing__final .kultiv-landing__h2 {
@@ -382,18 +456,47 @@
   }
 
   .kultiv-landing__final-sub {
-    font-size: 0.82rem;
-    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--k-muted);
-    margin: 0 0 28px;
-    max-width: 40rem;
+    color: rgba(154, 145, 126, 0.95);
+    margin: 0 0 32px;
+    max-width: 42rem;
     margin-inline: auto;
+    line-height: 1.65;
   }
 
   @media (max-width: 900px) {
     .kultiv-landing__grid {
       grid-template-columns: 1fr;
+    }
+
+    .kultiv-landing__inner--editorial {
+      text-align: left;
+    }
+
+    .kultiv-landing__inner--editorial .kultiv-landing__body {
+      margin-inline: 0;
+    }
+
+    .kultiv-landing__final {
+      text-align: left;
+    }
+
+    .kultiv-landing__final .kultiv-landing__h2,
+    .kultiv-landing__final-sub {
+      margin-inline: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kultiv-landing__btn,
+    .kultiv-landing__col {
+      transition: none;
+    }
+
+    .kultiv-landing__btn:hover {
+      transform: none;
     }
   }
 </style>
@@ -408,6 +511,7 @@
       {% endif %}
     </div>
     <div class="kultiv-landing__hero-inner">
+      <div class="kultiv-landing__hero-rule" aria-hidden="true"></div>
       {% if section.settings.hero_eyebrow != blank %}
         <p class="eyebrow kultiv-landing__hero-eyebrow">{{ section.settings.hero_eyebrow }}</p>
       {% endif %}
@@ -424,7 +528,7 @@
   </header>
 
   <section class="kultiv-landing__band kultiv-landing__band--surface k-reveal">
-    <div class="kultiv-landing__inner">
+    <div class="kultiv-landing__inner kultiv-landing__inner--editorial">
       {% if section.settings.problem_headline != blank %}
         <h2 class="kultiv-landing__h2">{{ section.settings.problem_headline }}</h2>
       {% endif %}
@@ -459,7 +563,7 @@
   </section>
 
   <section class="kultiv-landing__band kultiv-landing__band--surface k-reveal">
-    <div class="kultiv-landing__inner">
+    <div class="kultiv-landing__inner kultiv-landing__inner--editorial">
       {% if section.settings.system_headline != blank %}
         <h2 class="kultiv-landing__h2">{{ section.settings.system_headline }}</h2>
       {% endif %}

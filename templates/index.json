@@ -5,14 +5,14 @@
       "settings": {
         "hero_eyebrow": "Complete longevity nutrition",
         "hero_headline": "Not a supplement.\nA system.",
-        "hero_subline": "Built from soil upward.",
+        "hero_subline": "Complete longevity nutrition. Built from soil upward.",
         "hero_cta_label": "Join early access",
         "hero_cta_url": "/pages/subscribe",
         "problem_headline": "Modern nutrition is broken.",
-        "problem_body": "Most supplements are built in labs, not grown in soil. They optimise for trends, not biology.",
+        "problem_body": "Most supplements are engineered in labs, detached from how nutrients actually occur in nature. Optimised for trends, not biology.",
         "approach_headline": "We start where health actually begins.",
-        "system_headline": "Daily intake. Long-term compounding.",
-        "system_body": "Built for lifespan, not quick wins. One disciplined ritual — not a cabinet of single-note products.",
+        "system_headline": "The daily system",
+        "system_body": "A consistent, soil-first intake designed to compound over time. Not a quick fix — a long-term biological advantage.",
         "science_headline": "Grounded in biology.",
         "science_body": "Not marketing cycles. We publish where we stand — and evolve when the evidence moves.",
         "final_headline": "Join the first release.",
@@ -25,21 +25,21 @@
           "type": "approach_column",
           "settings": {
             "title": "Soil → Nutrient density",
-            "text": "Health signals start upstream — in diversity, structure, and what the soil passes forward."
+            "text": "Health begins in the ground, not the capsule."
           }
         },
         "ac2": {
           "type": "approach_column",
           "settings": {
             "title": "Bioavailability over dosage",
-            "text": "What you absorb matters more than what you print on a label."
+            "text": "Absorption defines outcome."
           }
         },
         "ac3": {
           "type": "approach_column",
           "settings": {
-            "title": "System over single product",
-            "text": "Longevity is a daily signal — not a one-off hero ingredient."
+            "title": "System over products",
+            "text": "Longevity is built daily, not occasionally."
           }
         }
       },
