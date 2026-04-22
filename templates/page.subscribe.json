@@ -5,16 +5,18 @@
       "settings": {
         "hero_action": "waitlist",
         "eyebrow": "Early access",
-        "headline": "Tend the ground.\nLive longer in it.",
-        "intro": "Complete longevity nutrition — primary on soil, not synthetic stacks. Join the list; we only write when it matters.",
+        "headline": "Not a supplement.\nA system.",
+        "intro": "Built from soil upward. Designed for lifespan, not trends. Join the list — we only write when it matters.",
+        "scarcity_line": "Founding members · limited allocation",
+        "release_scope_line": "First release: United Kingdom and Germany",
         "newsletter_tags": "early-access, newsletter",
         "email_placeholder": "Your email",
         "waitlist_submit_label": "Join early access",
         "waitlist_success_message": "You are on the list. We will be in touch.",
-        "waitlist_subtext": "Launching soon · United Kingdom and Germany",
+        "waitlist_subtext": "We never sell the list. Unsubscribe in one click.",
         "cta_primary_text": "Start subscription",
         "cta_secondary_text": "Explore the science",
-        "footnote": "Emails create customer records in Shopify (tagged for segmentation). Add Klaviyo when you are ready for flows."
+        "footnote": "Emails create tagged customers in Shopify Admin. Add Klaviyo or Shopify Email when you are ready for automation."
       },
       "blocks": {
         "perk-1": {
