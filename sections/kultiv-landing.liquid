@@ -1,0 +1,496 @@
+{% comment %}
+  KULTIV · Pre-launch homepage (single narrative — no product grid)
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "KULTIV Pre-launch landing",
+  "tag": "section",
+  "class": "kultiv-landing",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Hero eyebrow",
+      "default": "Complete longevity nutrition"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_headline",
+      "label": "Hero headline",
+      "default": "Not a supplement.\nA system."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subline",
+      "label": "Hero subline",
+      "default": "Built from soil upward. Designed for lifespan, not trends."
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_label",
+      "label": "Hero CTA label",
+      "default": "Join early access"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_url",
+      "label": "Hero CTA link"
+    },
+    {
+      "type": "header",
+      "content": "The problem"
+    },
+    {
+      "type": "text",
+      "id": "problem_headline",
+      "label": "Headline",
+      "default": "Modern nutrition is broken."
+    },
+    {
+      "type": "textarea",
+      "id": "problem_body",
+      "label": "Body",
+      "default": "Most supplements are built in labs, not grown in soil. They optimise for trends, not biology."
+    },
+    {
+      "type": "header",
+      "content": "The approach"
+    },
+    {
+      "type": "text",
+      "id": "approach_headline",
+      "label": "Section headline",
+      "default": "We start where health actually begins."
+    },
+    {
+      "type": "header",
+      "content": "The system"
+    },
+    {
+      "type": "text",
+      "id": "system_headline",
+      "label": "Headline",
+      "default": "Daily intake. Long-term compounding."
+    },
+    {
+      "type": "textarea",
+      "id": "system_body",
+      "label": "Body",
+      "default": "Built for lifespan, not quick wins. One disciplined ritual — not a cabinet of single-note products."
+    },
+    {
+      "type": "header",
+      "content": "Science positioning"
+    },
+    {
+      "type": "text",
+      "id": "science_headline",
+      "label": "Headline",
+      "default": "Grounded in biology."
+    },
+    {
+      "type": "textarea",
+      "id": "science_body",
+      "label": "Body",
+      "default": "Not marketing cycles. We publish where we stand — and evolve when the evidence moves."
+    },
+    {
+      "type": "header",
+      "content": "Final CTA"
+    },
+    {
+      "type": "text",
+      "id": "final_headline",
+      "label": "Headline",
+      "default": "Join the first release."
+    },
+    {
+      "type": "textarea",
+      "id": "final_subline",
+      "label": "Subline",
+      "default": "United Kingdom and Germany · Limited founding members"
+    },
+    {
+      "type": "text",
+      "id": "final_cta_label",
+      "label": "Button label",
+      "default": "Join early access"
+    },
+    {
+      "type": "url",
+      "id": "final_cta_url",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "approach_column",
+      "name": "Approach column",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Soil → Nutrient density"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Supporting line",
+          "default": "Nutrient quality begins in the ground — not in a trend deck."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "KULTIV Pre-launch landing",
+      "blocks": [
+        {
+          "type": "approach_column",
+          "settings": {
+            "title": "Soil → Nutrient density",
+            "text": "Health signals start upstream — in diversity, structure, and what the soil passes forward."
+          }
+        },
+        {
+          "type": "approach_column",
+          "settings": {
+            "title": "Bioavailability over dosage",
+            "text": "What you absorb matters more than what you print on a label."
+          }
+        },
+        {
+          "type": "approach_column",
+          "settings": {
+            "title": "System over single product",
+            "text": "Longevity is a daily signal — not a one-off hero ingredient."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% liquid
+  assign hero_href = section.settings.hero_cta_url
+  if hero_href == blank
+    assign hero_href = '/pages/subscribe'
+  endif
+  assign final_href = section.settings.final_cta_url
+  if final_href == blank
+    assign final_href = '/pages/subscribe'
+  endif
+%}
+
+<style>
+  .kultiv-landing {
+    --k-landing-pad: clamp(72px, 11vw, 120px);
+    background-color: var(--k-earth);
+    color: var(--k-cream);
+  }
+
+  .kultiv-landing__hero {
+    position: relative;
+    min-height: min(100svh, 900px);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--k-landing-pad) 0 clamp(56px, 8vw, 96px);
+    overflow: hidden;
+  }
+
+  .kultiv-landing__hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .kultiv-landing__hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.22;
+    filter: saturate(0.45);
+  }
+
+  .kultiv-landing__hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(22, 14, 4, 0.5) 0%,
+      rgba(22, 14, 4, 0.75) 45%,
+      var(--k-earth) 100%
+    );
+  }
+
+  .kultiv-landing__hero-fallback {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 20% 80%, rgba(31, 61, 42, 0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(200, 169, 110, 0.07) 0%, transparent 50%),
+      var(--k-earth-2);
+  }
+
+  .kultiv-landing__hero-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-landing__hero-eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .kultiv-landing__hero-headline {
+    font-family: var(--k-font-display);
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--k-cream);
+    margin: 0 0 24px;
+    max-width: 14ch;
+  }
+
+  .kultiv-landing__hero-subline {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--k-muted);
+    margin: 0 0 36px;
+    max-width: 36ch;
+  }
+
+  .kultiv-landing__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 32px;
+    font-family: var(--k-font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--k-cream);
+    background: var(--k-forest);
+    border: 1px solid rgba(200, 169, 110, 0.35);
+    border-radius: var(--k-radius-pill);
+    text-decoration: none;
+    transition: background var(--k-transition), border-color var(--k-transition), color var(--k-transition);
+  }
+
+  .kultiv-landing__btn:hover {
+    background: var(--k-forest-2);
+    border-color: var(--k-gold);
+    color: var(--k-white);
+  }
+
+  .kultiv-landing__band {
+    padding: var(--k-landing-pad) 0;
+    border-top: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-landing__band--surface {
+    background-color: var(--k-surface);
+  }
+
+  .kultiv-landing__band--forest {
+    background: linear-gradient(180deg, var(--k-forest-2) 0%, var(--k-forest) 100%);
+    border-color: rgba(200, 169, 110, 0.12);
+  }
+
+  .kultiv-landing__inner {
+    max-width: var(--k-max-width);
+    margin-inline: auto;
+    padding-inline: var(--k-gutter);
+  }
+
+  .kultiv-landing__h2 {
+    font-family: var(--k-font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 300;
+    line-height: 1.12;
+    margin: 0 0 20px;
+    color: var(--k-cream);
+  }
+
+  .kultiv-landing__body {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--k-muted);
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .kultiv-landing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: clamp(36px, 5vw, 56px);
+    background: var(--k-border-subtle);
+    border: 1px solid var(--k-border-subtle);
+  }
+
+  .kultiv-landing__col {
+    background: var(--k-earth);
+    padding: clamp(28px, 4vw, 40px);
+  }
+
+  .kultiv-landing__band--surface .kultiv-landing__col {
+    background: var(--k-surface-2);
+  }
+
+  .kultiv-landing__col h3 {
+    font-family: var(--k-font-display);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0 0 12px;
+    color: var(--k-cream);
+  }
+
+  .kultiv-landing__col p {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--k-muted);
+  }
+
+  .kultiv-landing__final {
+    text-align: center;
+    padding: clamp(88px, 12vw, 140px) 0;
+  }
+
+  .kultiv-landing__final .kultiv-landing__h2 {
+    margin-inline: auto;
+  }
+
+  .kultiv-landing__final-sub {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+    margin: 0 0 28px;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 900px) {
+    .kultiv-landing__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="kultiv-landing">
+  <header class="kultiv-landing__hero k-reveal">
+    <div class="kultiv-landing__hero-bg" aria-hidden="true">
+      {% if section.settings.hero_image %}
+        {{ section.settings.hero_image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high' }}
+      {% else %}
+        <div class="kultiv-landing__hero-fallback"></div>
+      {% endif %}
+    </div>
+    <div class="kultiv-landing__hero-inner">
+      {% if section.settings.hero_eyebrow != blank %}
+        <p class="eyebrow kultiv-landing__hero-eyebrow">{{ section.settings.hero_eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.hero_headline != blank %}
+        <h1 class="kultiv-landing__hero-headline">{{ section.settings.hero_headline | newline_to_br }}</h1>
+      {% endif %}
+      {% if section.settings.hero_subline != blank %}
+        <p class="kultiv-landing__hero-subline">{{ section.settings.hero_subline }}</p>
+      {% endif %}
+      {% if section.settings.hero_cta_label != blank %}
+        <a class="kultiv-landing__btn" href="{{ hero_href }}">{{ section.settings.hero_cta_label }}</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <section class="kultiv-landing__band kultiv-landing__band--surface k-reveal">
+    <div class="kultiv-landing__inner">
+      {% if section.settings.problem_headline != blank %}
+        <h2 class="kultiv-landing__h2">{{ section.settings.problem_headline }}</h2>
+      {% endif %}
+      {% if section.settings.problem_body != blank %}
+        <p class="kultiv-landing__body">{{ section.settings.problem_body }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="kultiv-landing__band k-reveal">
+    <div class="kultiv-landing__inner">
+      {% if section.settings.approach_headline != blank %}
+        <h2 class="kultiv-landing__h2">{{ section.settings.approach_headline }}</h2>
+      {% endif %}
+      {% if section.blocks.size > 0 %}
+        <div class="kultiv-landing__grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'approach_column' %}
+              <div class="kultiv-landing__col" {{ block.shopify_attributes }}>
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <p>{{ block.settings.text }}</p>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="kultiv-landing__band kultiv-landing__band--surface k-reveal">
+    <div class="kultiv-landing__inner">
+      {% if section.settings.system_headline != blank %}
+        <h2 class="kultiv-landing__h2">{{ section.settings.system_headline }}</h2>
+      {% endif %}
+      {% if section.settings.system_body != blank %}
+        <p class="kultiv-landing__body">{{ section.settings.system_body }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="kultiv-landing__band kultiv-landing__band--forest k-reveal">
+    <div class="kultiv-landing__inner">
+      {% if section.settings.science_headline != blank %}
+        <h2 class="kultiv-landing__h2">{{ section.settings.science_headline }}</h2>
+      {% endif %}
+      {% if section.settings.science_body != blank %}
+        <p class="kultiv-landing__body">{{ section.settings.science_body }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="kultiv-landing__final k-reveal">
+    <div class="kultiv-landing__inner">
+      {% if section.settings.final_headline != blank %}
+        <h2 class="kultiv-landing__h2">{{ section.settings.final_headline }}</h2>
+      {% endif %}
+      {% if section.settings.final_subline != blank %}
+        <p class="kultiv-landing__final-sub">{{ section.settings.final_subline }}</p>
+      {% endif %}
+      {% if section.settings.final_cta_label != blank %}
+        <a class="kultiv-landing__btn" href="{{ final_href }}">{{ section.settings.final_cta_label }}</a>
+      {% endif %}
+    </div>
+  </section>
+</div>
