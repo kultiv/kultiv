@@ -1,6 +1,160 @@
+{% doc %}
+  @prompt
+    video
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-block-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-video-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    background-color: #000000;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-video-wrapper-{{ ai_gen_id }} iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .ai-video-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
+
+  .ai-video-placeholder-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  .ai-video-empty-state-{{ ai_gen_id }} {
+    margin-top: 16px;
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-video-block-{{ ai_gen_id }} {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<div
+  class="ai-video-block-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-video-wrapper-{{ ai_gen_id }}">
+    {% if block.settings.video_url != blank %}
+      {% liquid
+        assign video_id = block.settings.video_url.id
+        assign video_type = block.settings.video_url.type
+      %}
+
+      {% if video_type == 'youtube' %}
+        <iframe
+          src="https://www.youtube.com/embed/{{ video_id }}?rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          title="{{ block.settings.video_title | escape }}"
+        ></iframe>
+      {% elsif video_type == 'vimeo' %}
+        <iframe
+          src="https://player.vimeo.com/video/{{ video_id }}?title=0&byline=0&portrait=0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          title="{{ block.settings.video_title | escape }}"
+        ></iframe>
+      {% endif %}
+    {% else %}
+      <div class="ai-video-placeholder-{{ ai_gen_id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <div class="ai-video-empty-state-{{ ai_gen_id }}">
+          Add a YouTube or Vimeo video URL
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Video",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "text",
+      "id": "video_title",
+      "label": "Video title",
+      "default": "Video player"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video"
+    }
+  ]
+}
 {% endschema %}
