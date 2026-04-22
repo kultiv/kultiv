@@ -9,22 +9,71 @@
   "class": "kultiv-subscription-page",
   "settings": [
     {
+      "type": "select",
+      "id": "hero_action",
+      "label": "Primary action",
+      "options": [
+        { "value": "waitlist", "label": "Early access (email capture)" },
+        { "value": "ctas", "label": "Buttons (product / pages)" }
+      ],
+      "default": "waitlist"
+    },
+    {
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "Subscribe"
+      "default": "Early access"
     },
     {
       "type": "textarea",
       "id": "headline",
       "label": "Headline",
-      "default": "One habit.\nMeasured in years."
+      "default": "Tend the ground.\nLive longer in it."
     },
     {
       "type": "textarea",
       "id": "intro",
       "label": "Intro",
-      "default": "Monthly delivery, 15% off, cancel anytime. Built for people who want microbiome-first nutrition without the supplement aisle."
+      "default": "Complete longevity nutrition — built from soil upward. Join the list; we will only write when it matters."
+    },
+    {
+      "type": "header",
+      "content": "Waitlist"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_tags",
+      "label": "Customer tags (comma-separated)",
+      "default": "early-access, newsletter",
+      "info": "Applied when someone signs up. Visible in Shopify Admin → Customers."
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Your email"
+    },
+    {
+      "type": "text",
+      "id": "waitlist_submit_label",
+      "label": "Waitlist button label",
+      "default": "Join early access"
+    },
+    {
+      "type": "text",
+      "id": "waitlist_success_message",
+      "label": "Success message",
+      "default": "You are on the list. We will be in touch."
+    },
+    {
+      "type": "text",
+      "id": "waitlist_subtext",
+      "label": "Line under form",
+      "default": "Launching soon · United Kingdom and Germany"
+    },
+    {
+      "type": "header",
+      "content": "Buttons (when “Buttons” is selected)"
     },
     {
       "type": "text",
@@ -41,7 +90,7 @@
       "type": "text",
       "id": "cta_secondary_text",
       "label": "Secondary CTA",
-      "default": "View product"
+      "default": "Explore the science"
     },
     {
       "type": "url",
@@ -52,7 +101,7 @@
       "type": "text",
       "id": "footnote",
       "label": "Footnote",
-      "default": "Works with ReCharge, Seal Subscriptions, or native selling plans — assign your subscription product URL above."
+      "default": "No spam. Unsubscribe anytime. When we launch subscriptions, you will hear from us first."
     }
   ],
   "blocks": [
@@ -79,10 +128,13 @@
   "presets": [
     {
       "name": "KULTIV Subscription Page",
+      "settings": {
+        "hero_action": "waitlist"
+      },
       "blocks": [
-        { "type": "perk", "settings": { "title": "Save every month", "text": "15% off recurring orders. Cancel anytime from your account." } },
-        { "type": "perk", "settings": { "title": "Shipped on your rhythm", "text": "Monthly by default — adjust frequency in your subscription portal." } },
-        { "type": "perk", "settings": { "title": "FSA complete food", "text": "Full label transparency and BRC-grade manufacturing." } }
+        { "type": "perk", "settings": { "title": "Founding access", "text": "First to know at launch — pricing, science drops, and allocation." } },
+        { "type": "perk", "settings": { "title": "Soil-first system", "text": "Not a synthetic stack. A structured nutrition system with published standards." } },
+        { "type": "perk", "settings": { "title": "UK & EU", "text": "Manufacturing and compliance built for where we ship first." } }
       ]
     }
   ]
@@ -131,6 +183,84 @@
     flex-wrap: wrap;
     gap: 16px 24px;
     align-items: center;
+  }
+
+  .kultiv-subscription-page__waitlist {
+    margin-top: 8px;
+    max-width: 36rem;
+  }
+
+  .kultiv-subscription-page__field-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .kultiv-subscription-page__field-row input[type='email'] {
+    flex: 1 1 220px;
+    min-height: 48px;
+    padding: 0 18px;
+    font-family: var(--k-font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--k-cream);
+    background: var(--k-surface);
+    border: 1px solid var(--k-border-subtle);
+    border-radius: var(--k-radius-md);
+    outline: none;
+    transition: border-color var(--k-transition);
+  }
+
+  .kultiv-subscription-page__field-row input[type='email']::placeholder {
+    color: rgba(154, 145, 126, 0.85);
+  }
+
+  .kultiv-subscription-page__field-row input[type='email']:focus {
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-subscription-page__field-row button[type='submit'] {
+    flex: 0 0 auto;
+    min-height: 48px;
+    padding: 0 26px;
+    font-family: var(--k-font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--k-cream);
+    background: var(--k-forest);
+    border: 1px solid rgba(200, 169, 110, 0.35);
+    border-radius: var(--k-radius-pill);
+    cursor: pointer;
+    transition: background var(--k-transition), border-color var(--k-transition);
+  }
+
+  .kultiv-subscription-page__field-row button[type='submit']:hover {
+    background: var(--k-forest-2);
+    border-color: var(--k-gold);
+  }
+
+  .kultiv-subscription-page__form-errors {
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    color: #c9a27a;
+  }
+
+  .kultiv-subscription-page__form-success {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--k-cream);
+  }
+
+  .kultiv-subscription-page__waitlist-sub {
+    margin: 16px 0 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--k-muted);
   }
 
   .kultiv-subscription-page__btn {
@@ -227,24 +357,61 @@
       {% if section.settings.intro != blank %}
         <p class="kultiv-subscription-page__intro">{{ section.settings.intro }}</p>
       {% endif %}
-      <div class="kultiv-subscription-page__actions">
-        {% if section.settings.cta_primary_text != blank %}
-          <a
-            class="kultiv-subscription-page__btn kultiv-subscription-page__btn--primary"
-            href="{{ section.settings.cta_primary_url | default: routes.root_url }}"
-          >
-            {{ section.settings.cta_primary_text }}
-          </a>
-        {% endif %}
-        {% if section.settings.cta_secondary_text != blank %}
-          <a
-            class="kultiv-subscription-page__btn kultiv-subscription-page__btn--ghost"
-            href="{{ section.settings.cta_secondary_url | default: routes.all_products_collection_url }}"
-          >
-            {{ section.settings.cta_secondary_text }}
-          </a>
-        {% endif %}
-      </div>
+      {% if section.settings.hero_action == 'waitlist' %}
+        <div class="kultiv-subscription-page__waitlist">
+          {% form 'customer', class: 'kultiv-subscription-page__form' %}
+            <input type="hidden" name="contact[tags]" value="{{ section.settings.newsletter_tags | strip | escape }}">
+            {% if form.posted_successfully? %}
+              <p class="kultiv-subscription-page__form-success" tabindex="-1">
+                {{ section.settings.waitlist_success_message }}
+              </p>
+            {% else %}
+              {% if form.errors %}
+                <div class="kultiv-subscription-page__form-errors">
+                  {{ form.errors | default_errors }}
+                </div>
+              {% endif %}
+              <div class="kultiv-subscription-page__field-row">
+                <label class="visually-hidden" for="KultivWaitlistEmail-{{ section.id }}">{{ section.settings.email_placeholder }}</label>
+                <input
+                  id="KultivWaitlistEmail-{{ section.id }}"
+                  type="email"
+                  name="contact[email]"
+                  value="{{ form.email }}"
+                  placeholder="{{ section.settings.email_placeholder | escape }}"
+                  autocomplete="email"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  required
+                >
+                <button type="submit">{{ section.settings.waitlist_submit_label | escape }}</button>
+              </div>
+              {% if section.settings.waitlist_subtext != blank %}
+                <p class="kultiv-subscription-page__waitlist-sub">{{ section.settings.waitlist_subtext }}</p>
+              {% endif %}
+            {% endif %}
+          {% endform %}
+        </div>
+      {% else %}
+        <div class="kultiv-subscription-page__actions">
+          {% if section.settings.cta_primary_text != blank %}
+            <a
+              class="kultiv-subscription-page__btn kultiv-subscription-page__btn--primary"
+              href="{{ section.settings.cta_primary_url | default: routes.root_url }}"
+            >
+              {{ section.settings.cta_primary_text }}
+            </a>
+          {% endif %}
+          {% if section.settings.cta_secondary_text != blank %}
+            <a
+              class="kultiv-subscription-page__btn kultiv-subscription-page__btn--ghost"
+              href="{{ section.settings.cta_secondary_url | default: routes.all_products_collection_url }}"
+            >
+              {{ section.settings.cta_secondary_text }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
     </header>
 
     {% if section.blocks.size > 0 %}

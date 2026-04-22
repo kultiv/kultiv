@@ -1,1 +1,46 @@
-{"sections":{"kultiv-subscription":{"type":"kultiv-subscription-page","settings":{}}},"order":["kultiv-subscription"]}
+{
+  "sections": {
+    "kultiv-subscription": {
+      "type": "kultiv-subscription-page",
+      "settings": {
+        "hero_action": "waitlist",
+        "eyebrow": "Early access",
+        "headline": "Tend the ground.\nLive longer in it.",
+        "intro": "Complete longevity nutrition — primary on soil, not synthetic stacks. Join the list; we only write when it matters.",
+        "newsletter_tags": "early-access, newsletter",
+        "email_placeholder": "Your email",
+        "waitlist_submit_label": "Join early access",
+        "waitlist_success_message": "You are on the list. We will be in touch.",
+        "waitlist_subtext": "Launching soon · United Kingdom and Germany",
+        "cta_primary_text": "Start subscription",
+        "cta_secondary_text": "Explore the science",
+        "footnote": "Emails create customer records in Shopify (tagged for segmentation). Add Klaviyo when you are ready for flows."
+      },
+      "blocks": {
+        "perk-1": {
+          "type": "perk",
+          "settings": {
+            "title": "Founding access",
+            "text": "First to know at launch — allocation, pricing, and the science programme."
+          }
+        },
+        "perk-2": {
+          "type": "perk",
+          "settings": {
+            "title": "Soil-first system",
+            "text": "Structured nutrition with published standards — not a noisy supplement aisle."
+          }
+        },
+        "perk-3": {
+          "type": "perk",
+          "settings": {
+            "title": "UK and EU",
+            "text": "Compliance and manufacturing aligned with where we ship first."
+          }
+        }
+      },
+      "block_order": ["perk-1", "perk-2", "perk-3"]
+    }
+  },
+  "order": ["kultiv-subscription"]
+}

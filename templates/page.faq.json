@@ -1,1 +1,44 @@
-{"sections":{"kultiv-faq":{"type":"kultiv-faq-page","settings":{}}},"order":["kultiv-faq"]}
+{
+  "sections": {
+    "kultiv-faq": {
+      "type": "kultiv-faq-page",
+      "settings": {
+        "eyebrow": "FAQ",
+        "headline": "Straight answers.",
+        "intro": "Pre-launch questions we get before someone joins early access."
+      },
+      "blocks": {
+        "q1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is KULTIV?",
+            "answer": "<p>A complete longevity nutrition system — built from soil and whole-food matrices upward, not synthetic stacks and noise.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this a supplement brand?",
+            "answer": "<p>No. We are building as a complete food system with published standards — not a single hero capsule.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When do you launch?",
+            "answer": "<p>We are in early access. Join the list to be first — United Kingdom and Germany first.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What happens after I join the list?",
+            "answer": "<p>You will get only high-signal updates: launch timing, science drops, and allocation. Unsubscribe anytime.</p>"
+          }
+        }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    }
+  },
+  "order": ["kultiv-faq"]
+}

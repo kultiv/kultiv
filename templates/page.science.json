@@ -1,1 +1,42 @@
-{"sections":{"kultiv-science":{"type":"kultiv-science-page","settings":{}}},"order":["kultiv-science"]}
+{
+  "sections": {
+    "kultiv-science": {
+      "type": "kultiv-science-page",
+      "settings": {
+        "eyebrow": "Foundation",
+        "headline": "Soil first.\nThen science.",
+        "intro": "Nutrient density and bioavailability start in the ground — not in a lab shortcut. Here is how we think about proof before product.",
+        "cta_text": "Join early access",
+        "cta_url": "/pages/subscribe"
+      },
+      "blocks": {
+        "p1": {
+          "type": "pillar",
+          "settings": {
+            "label": "Soil",
+            "title": "Primary on the ground",
+            "body": "We treat soil biology and plant diversity as upstream of everything that ends up in a daily ritual — not as marketing language."
+          }
+        },
+        "p2": {
+          "type": "pillar",
+          "settings": {
+            "label": "Bioavailability",
+            "title": "Absorption over hype",
+            "body": "What your system can use matters more than headline doses. The formulation stack is built around matrices the body recognises as food."
+          }
+        },
+        "p3": {
+          "type": "pillar",
+          "settings": {
+            "label": "Consistency",
+            "title": "Longevity is daily",
+            "body": "The science we follow points to habits and signalling over months — not one-off hero ingredients. That is why we are building for subscription from day one."
+          }
+        }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    }
+  },
+  "order": ["kultiv-science"]
+}

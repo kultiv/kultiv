@@ -208,7 +208,10 @@
         <p class="kultiv-science-page__intro">{{ section.settings.intro }}</p>
       {% endif %}
       {% if section.settings.cta_text != blank %}
-        <a class="kultiv-science-page__cta" href="{{ section.settings.cta_url | default: routes.all_products_collection_url }}">
+        <a
+          class="kultiv-science-page__cta"
+          href="{% if section.settings.cta_url != blank %}{{ section.settings.cta_url }}{% else %}{{ routes.root_url }}{% endif %}"
+        >
           {{ section.settings.cta_text }}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="square"/>
