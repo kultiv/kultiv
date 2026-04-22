@@ -6,8 +6,10 @@
         "eyebrow": "Complete Longevity Nutrition",
         "headline": "Tend the ground.\nLive longer in it.",
         "subline": "A complete food system engineered around microbiome science and inflammaging research. Not a supplement. Not a shake. A daily ritual for how long you live well.",
-        "cta_primary_text": "Start Your Subscription",
-        "cta_secondary_text": "Explore the Science",
+        "cta_primary_text": "Join early access",
+        "cta_primary_url": "/pages/subscribe",
+        "cta_secondary_text": "Explore the science",
+        "cta_secondary_url": "/pages/science",
         "show_stats": true
       }
     },
@@ -24,7 +26,8 @@
         "eyebrow": "The Daily System",
         "headline": "The Daily",
         "description": "Complete meal powder engineered around microbiome diversity. 30+ plant sources. Prebiotic fibre. Postbiotic compounds. Akkermansia-supporting substrates. One serving, every day.",
-        "cta_text": "Subscribe & Save 15%"
+        "cta_text": "Join early access",
+        "cta_url_without_product": "/pages/subscribe"
       },
       "blocks": {
         "feature-1": {
