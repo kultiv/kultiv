@@ -57,11 +57,35 @@
     "17768872392bdd83be": {
       "type": "_blocks",
       "settings": {}
+    },
+    "1776921615e6722c15": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3315681_KqX7PM": {
+          "type": "ai_gen_block_3315681",
+          "settings": {
+            "video_url": "",
+            "video_file": "shopify://files/videos/AZ24xA3Gd1LfjbKVLyf1_Q-AZ24xA3GfuQTD64W3uKfhg.mp4",
+            "autoplay": true,
+            "mute": true,
+            "loop": true,
+            "show_controls": true,
+            "desktop_width_percent": 100,
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3315681_KqX7PM"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "announcement-bar",
     "header",
-    "17768872392bdd83be"
+    "17768872392bdd83be",
+    "1776921615e6722c15"
   ]
 }
