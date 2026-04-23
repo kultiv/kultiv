@@ -3595,3 +3595,51 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+/* === KULTIV DESIGN SYSTEM OVERRIDES === */
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+  color: #0F172A;
+  letter-spacing: -0.02em;
+}
+
+/* Body text */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  color: #334155;
+}
+
+/* Links */
+a {
+  color: #16A34A;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #15803D;
+}
+
+/* Buttons */
+.button, .btn {
+  background-color: #16A34A;
+  color: #ffffff;
+  border-radius: 8px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.button:hover, .btn:hover {
+  background-color: #15803D;
+}
+
+/* Borders */
+.card, .product-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+}
+
+/* Section spacing */
+.section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
