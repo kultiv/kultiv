@@ -299,12 +299,7 @@
       {% endif %}
 
       {% if v.available %}
-        {% form 'product',
-          access_product,
-          id: 'KultivAccessForm-' | append: section.id,
-          class: 'kultiv-access__form',
-          novalidate: 'novalidate'
-        %}
+        {% form section.id, class: 'kultiv-access__form', novalidate: 'novalidate' %}
           <input type="hidden" name="quantity" value="1">
           {% if access_product.has_only_default_variant %}
             <input type="hidden" name="id" value="{{ v.id }}">
@@ -345,4 +340,20 @@
       </div>
     {% endif %}
   </div>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% form 'product',
+              access_product,
+              id: 'KultivAccessForm-' | append: section.id,
+              class: 'kultiv-access__form',
+              novalidate: 'novalidate'
+            %}
+  to: "{% form section.id, class: 'kultiv-access__form', novalidate: 'novalidate'
+    %}"
+  position: 7696..7773
+{%- endcomment -%}
